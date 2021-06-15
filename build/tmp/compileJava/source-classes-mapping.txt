@@ -1,32 +1,36 @@
-PageObjects/TicketPricePage.java
- PageObjects.TicketPricePage
-Common/Constant.java
- Common.Constant
-PageObjects/TimetablePage.java
- PageObjects.TimetablePage
-Common/Utilities.java
- Common.Utilities
-PageObjects/FAQPage.java
- PageObjects.FAQPage
-Testcases/HomeTest.java
- Testcases.HomeTest
-PageObjects/LoginPage.java
- PageObjects.LoginPage
-PageObjects/ContactPage.java
- PageObjects.ContactPage
-PageObjects/GeneralPage.java
- PageObjects.GeneralPage
-PageObjects/MyTicketPage.java
- PageObjects.MyTicketPage
-PageObjects/HomePage.java
- PageObjects.HomePage
-PageObjects/BookTicketPage.java
- PageObjects.BookTicketPage
-Testcases/LoginTest.java
- Testcases.LoginTest
-PageObjects/ChangePassword.java
- PageObjects.ChangePassword
-PageObjects/ForgotPasswordPage.java
- PageObjects.ForgotPasswordPage
-PageObjects/RegisterPage.java
- PageObjects.RegisterPage
+page/objects/FAQPage.java
+ page.objects.FAQPage
+common/Utilities.java
+ common.Utilities
+common/Constant.java
+ common.Constant
+page/objects/BookTicketPage.java
+ page.objects.BookTicketPage
+page/objects/ConfirmCodePage.java
+ page.objects.ConfirmCodePage
+page/objects/MyTicketPage.java
+ page.objects.MyTicketPage
+page/objects/LoginPage.java
+ page.objects.LoginPage
+page/objects/GeneralPage.java
+ page.objects.GeneralPage
+page/objects/TimetablePage.java
+ page.objects.TimetablePage
+page/objects/TrainTicketPricingListPage.java
+ page.objects.TrainTicketPricingListPage
+page/objects/ContactPage.java
+ page.objects.ContactPage
+page/objects/ForgotPasswordPage.java
+ page.objects.ForgotPasswordPage
+page/objects/BookTicketSuccessfullyPage.java
+ page.objects.BookTicketSuccessfullyPage
+page/objects/TicketPricePage.java
+ page.objects.TicketPricePage
+testcases/LoginTest.java
+ testcases.LoginTest
+page/objects/RegisterPage.java
+ page.objects.RegisterPage
+page/objects/ChangePasswordPage.java
+ page.objects.ChangePasswordPage
+page/objects/HomePage.java
+ page.objects.HomePage

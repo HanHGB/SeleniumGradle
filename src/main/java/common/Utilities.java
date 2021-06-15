@@ -14,6 +14,6 @@ public class Utilities {
 
     public void scrollDownPage(WebElement element){
         JavascriptExecutor js = (JavascriptExecutor)Constant.WEBDRIVER;
-        js.executeScript("arguments[0].scrollIntoView();", element);
+        js.executeScript("arguments[0].scrollIntoView(true);", element);
     }
 }

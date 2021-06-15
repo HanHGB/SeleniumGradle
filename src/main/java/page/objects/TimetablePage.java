@@ -24,13 +24,13 @@ public class TimetablePage {
     public WebElement getLinkCheckPrice(String departStation, String arriveStation){
         return Constant.WEBDRIVER.findElement(By.xpath("//table[@class='MyTable WideTable']//td[count(//th[.='Depart Station']/preceding-sibling::th)+1][.='" + departStation
                         + "']/../td[count(//th[.='Arrive Station']/preceding-sibling::th)+1][.='" + arriveStation
-                        + "']/../td[count(//th[.='check price']/preceding-sibling::th)+1]"));
+                        + "']/../td[count(//th[.='Check Price']/preceding-sibling::th)+1]"));
     }
 
     public WebElement getLinkBookTicket(String departStation, String arriveStation){
         return Constant.WEBDRIVER.findElement(By.xpath("//table[@class='MyTable WideTable']//td[count(//th[.='Depart Station']/preceding-sibling::th)+1][.='" + departStation
                 + "']/../td[count(//th[.='Arrive Station']/preceding-sibling::th)+1][.='" + arriveStation
-                + "']/../td[count(//th[.='book ticket']/preceding-sibling::th)+1]"));
+                + "']/../td[count(//th[.='Book ticket']/preceding-sibling::th)+1]"));
     }
 
     //Methods
@@ -45,8 +45,8 @@ public class TimetablePage {
     public BookTicketPage gotoBookTicketPage(String departStation, String arriveStation){
 
         WebElement linkBookTicket = this.getLinkBookTicket(departStation, arriveStation);
-        utilities.scrollDownPage(linkBookTicket);
-        linkBookTicket.click();
+        utilities.scrollDownPage(this.getLinkBookTicket(departStation, arriveStation));
+        this.getLinkBookTicket(departStation, arriveStation).click();
         return new BookTicketPage();
     }
 }

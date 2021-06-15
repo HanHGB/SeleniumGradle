@@ -2,10 +2,8 @@ package testcases;
 
 
 import common.Constant;
-import page.objects.ForgotPasswordPage;
-import page.objects.HomePage;
-import page.objects.LoginPage;
-import page.objects.RegisterPage;
+import org.openqa.selenium.chrome.ChromeDriver;
+import page.objects.*;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.testng.Assert;
@@ -18,8 +16,8 @@ public class LoginTest {
     @BeforeTest
     public void beforeMethod() {
         System.out.println("Pre-condition");
-        WebDriverManager.edgedriver().setup();
-        Constant.WEBDRIVER = new EdgeDriver();
+        WebDriverManager.chromiumdriver().setup();
+        Constant.WEBDRIVER = new ChromeDriver();
         Constant.WEBDRIVER.manage().window().maximize();
     }
 
@@ -29,12 +27,17 @@ public class LoginTest {
         HomePage homePage = new HomePage();
         homePage.open();
 
-        LoginPage loginPage = homePage.gotoLoginPage();
+//        LoginPage loginPage = homePage.gotoLoginPage();
+//
+//        String actualMsg = loginPage.login(Constant.USERNAME, Constant.PASSWORD).getWelcomeMessage();
+//        String expectedMsg = "Welcome " + Constant.USERNAME;
+//
+//        Assert.assertEquals(actualMsg, expectedMsg, "Welcome msg is not correctly");
 
-        String actualMsg = loginPage.login(Constant.USERNAME, Constant.PASSWORD).getWelcomeMessage();
-        String expectedMsg = "Welcome " + Constant.USERNAME;
+        homePage.gotoTimetable();
 
-        Assert.assertEquals(actualMsg, expectedMsg, "Welcome msg is not correctly");
+        TimetablePage timetablePage = new TimetablePage();
+        timetablePage.gotoBookTicketPage("Nha Trang", "Đà Nẵng");
 
     }
 

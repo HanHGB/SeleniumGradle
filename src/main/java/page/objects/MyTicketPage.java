@@ -36,7 +36,8 @@ public class MyTicketPage extends GeneralPage{
         return Constant.WEBDRIVER.findElement(By.xpath("//table[@class='MyTable']//td[.='" + departStation
                 + "']/following-sibling::td[.='" + arriveStation + "']/following-sibling::td[.='" + seatType
                 + "']/following-sibling::td[.='" + departDate + "']/following-sibling::td[.='" + bookDate
-                + "']/following-sibling::td[.='" + expiredDate +"']/following-sibling::td[.='" + status +"']"));
+                + "']/following-sibling::td[.='" + expiredDate +"']/following-sibling::td[.='" + status
+                + "']/following-sibling::td/input"));
     }
 
     //Methods
