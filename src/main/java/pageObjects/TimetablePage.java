@@ -49,4 +49,10 @@ public class TimetablePage extends GeneralPage{
         this.getLinkBookTicket(departStation, arriveStation).click();
         return new BookTicketPage();
     }
+
+    public String getDepartStation(String departStation){
+        return this.getTxtDepartStation(departStation).getText();
+    }
+
+    public String getArriveStation(String arriveStation){ return this.getTxtDepartStation(arriveStation).getText(); }
 }

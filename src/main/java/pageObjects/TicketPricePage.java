@@ -12,8 +12,7 @@ public class TicketPricePage extends GeneralPage {
     }
 
     protected WebElement getBtnBookTicket(String seatType){
-        return Constant.WEBDRIVER.findElement(By.xpath("//table[@class='NoBorder']//td[contains(.,'" + seatType +"')]/."
-                + ".//a"));
+        return Constant.WEBDRIVER.findElement(By.xpath("//table[@class='NoBorder']//td[contains(.,'" + seatType +"')]/..//a"));
     }
 
     //Methods
@@ -22,4 +21,7 @@ public class TicketPricePage extends GeneralPage {
         return new BookTicketPage();
     }
 
+    public String getTrainName(){
+        return this.getTxtTrainName().getText();
+    }
 }

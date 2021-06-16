@@ -7,12 +7,8 @@ import org.openqa.selenium.WebElement;
 public class LoginPage extends GeneralPage {
 
     //Elements
-    protected WebElement getTxtUsername() {
-        return Constant.WEBDRIVER.findElement(By.xpath("//input[@id='username']"));
-    }
-    protected WebElement getTxtPassword() {
-        return Constant.WEBDRIVER.findElement(By.xpath("//input[@id='password']"));
-    }
+    protected WebElement getTxtUsername() { return Constant.WEBDRIVER.findElement(By.xpath("//input[@id='username']")); }
+    protected WebElement getTxtPassword() { return Constant.WEBDRIVER.findElement(By.xpath("//input[@id='password']")); }
     protected WebElement getBtnLogin() { return Constant.WEBDRIVER.findElement(By.xpath("//input[@value='Login']")); }
     protected WebElement getLblLoginErrorMsg() { return Constant.WEBDRIVER.findElement(By.xpath("//p[@class='message error LoginForm']")); }
     protected WebElement getLinkRegisterPage() { return Constant.WEBDRIVER.findElement(By.xpath("//div[@id='content']//a[@href='Register.cshtml']")); }
@@ -40,5 +36,17 @@ public class LoginPage extends GeneralPage {
     public ForgotPasswordPage gotoForgotPasswordPage() {
         this.getLinkForgotPasswordPage().click();
         return new ForgotPasswordPage();
+    }
+
+    public String getLoginErrorMsg(){
+        return this.getLblLoginErrorMsg().getText();
+    }
+
+    public String getEmailErrorMsg(){
+        return this.getLblEmailErrorMsg().getText();
+    }
+
+    public String getPasswordErrorMsg(){
+        return this.getLblPasswordErrorMsg().getText();
     }
 }

@@ -24,4 +24,20 @@ public class ChangePasswordPage extends GeneralPage {
         this.getBtnChangePassword().click();
         return new ChangePasswordPage();
     }
+
+    public String getCurrentPasswordErrorMsg(){
+        return this.getLblCurrentPassErrorMsg().getText();
+    }
+
+    public String getNewPasswordErrorMsg(){
+        return this.getLblNewPassErrorMsg().getText();
+    }
+
+    public String getConfirmPasswordErrorMsg(){
+        return this.getLblConfirmPassErrorMsg().getText();
+    }
+
+    public String getChangePasswordErrorMsg(){
+        return this.getLblChangePassErrorMsg().getText();
+    }
 }

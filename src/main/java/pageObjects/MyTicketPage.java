@@ -8,7 +8,7 @@ import org.openqa.selenium.WebElement;
 public class MyTicketPage extends GeneralPage{
 
     //Declare
-    Utilities utilities = new Utilities();
+    private Utilities utilities = new Utilities();
 
     //Elements
     protected WebElement getCbxDepartStationFilter(){
@@ -33,6 +33,7 @@ public class MyTicketPage extends GeneralPage{
 
     protected WebElement getBtnCancel(String departStation, String arriveStation, String seatType, String departDate,
                                    String bookDate, String expiredDate, String status){
+
         return Constant.WEBDRIVER.findElement(By.xpath("//table[@class='MyTable']//td[.='" + departStation
                 + "']/following-sibling::td[.='" + arriveStation + "']/following-sibling::td[.='" + seatType
                 + "']/following-sibling::td[.='" + departDate + "']/following-sibling::td[.='" + bookDate
@@ -67,4 +68,13 @@ public class MyTicketPage extends GeneralPage{
         utilities.scrollDownPage(btnCancel);
         btnCancel.click();
     }
+
+    public String getFilterMsg(){
+        return this.getLblFilterMsg().getText();
+    }
+
+    public String getFilterDateErrorMsg(){
+        return this.getLblFilterDateErrorMsg().getText();
+    }
+
 }

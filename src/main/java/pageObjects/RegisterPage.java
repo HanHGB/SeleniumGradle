@@ -40,4 +40,24 @@ public class RegisterPage extends GeneralPage {
 
         return new HomePage();
     }
+
+    public String getEmailErrorMsg(){
+        return this.getLblEmailErrorMsg().getText();
+    }
+
+    public String getPasswordErrorMsg(){
+        return this.getLblPasswordErrorMsg().getText();
+    }
+
+    public String getConfirmPassErrorMsg(){
+        return this.getLblConfirmPassErrorMsg().getText();
+    }
+
+    public String getPIDErrorMsg(){
+        return this.getLblPIDErrorMsg().getText();
+    }
+
+    public String getCreateAccountErrorMsg(){
+        return this.getLblCreateAccountErrorMsg().getText();
+    }
 }

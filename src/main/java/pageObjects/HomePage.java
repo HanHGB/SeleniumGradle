@@ -7,9 +7,7 @@ import org.openqa.selenium.WebElement;
 public class HomePage extends GeneralPage {
 
     //Elements
-    protected WebElement getLinkRegister() {
-        return Constant.WEBDRIVER.findElement(By.xpath("//div[@id='content']//a[@href='/Account/Register.cshtml']"));
-    }
+    protected WebElement getLinkRegister() { return Constant.WEBDRIVER.findElement(By.xpath("//div[@id='content']//a[@href='/Account/Register.cshtml']")); }
 
     //Methods
     public HomePage open(){

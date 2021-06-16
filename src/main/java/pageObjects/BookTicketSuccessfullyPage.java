@@ -39,4 +39,35 @@ public class BookTicketSuccessfullyPage extends GeneralPage{
     }
 
     //Methods
+    public String getDepartStation(){
+        return this.getTxtDepartStation().getText();
+    }
+
+    public String getArriveStation(){
+        return this.getTxtArriveStation().getText();
+    }
+
+    public String getSeatType(){
+        return this.getTxtSeatType().getText();
+    }
+
+    public String getDepartDate(){
+        return this.getTxtDepartDate().getText();
+    }
+
+    public String getBookDate(){
+        return this.getTxtBookDate().getText();
+    }
+
+    public String getExpiredDate(){
+        return this.getTxtExpiredDate().getText();
+    }
+
+    public String getAmountTicket(){
+        return this.getTxtAmount().getText();
+    }
+
+    public String getTotalPrice(){
+        return this.getTxtTotalPrice().getText();
+    }
 }
