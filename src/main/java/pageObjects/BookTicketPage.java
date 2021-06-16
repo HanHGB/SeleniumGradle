@@ -1,4 +1,4 @@
-package page.objects;
+package pageObjects;
 
 import common.Constant;
 import common.Utilities;
@@ -32,6 +32,15 @@ public class BookTicketPage extends GeneralPage {
         return Constant.WEBDRIVER.findElement(By.xpath("//form//input[@value='Book ticket']"));
     }
 
+    public WebElement getLblTicketAmountErrorMsg(){
+        return Constant.WEBDRIVER.findElement(By.xpath("//form//label[@class='validation-error']"));
+    }
+
+    public WebElement getLblBookTicketErrorMsg(){
+        return Constant.WEBDRIVER.findElement(By.xpath("//div[@id='content']//p[@class='message error']"));
+    }
+
+    //Methods
     public BookTicketSuccessfullyPage bookTicket(int numberOfDays, String departStation, String arriveStation,
                                                  String seatType, int amountTicket){
 

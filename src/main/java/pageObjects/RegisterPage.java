@@ -1,4 +1,4 @@
-package page.objects;
+package pageObjects;
 
 import common.Constant;
 import org.openqa.selenium.By;
@@ -14,6 +14,11 @@ public class RegisterPage extends GeneralPage {
     public WebElement getTxtConfirmPassword(){ return Constant.WEBDRIVER.findElement(By.xpath("//input[@id='confirmPassword']")); }
     public WebElement getTxtPID(){ return Constant.WEBDRIVER.findElement(By.xpath("//input[@id='pid']")); }
     public WebElement getBtnRegister(){ return Constant.WEBDRIVER.findElement(By.xpath("//input[@type='submit']")); }
+    public WebElement getLblEmailErrorMsg(){ return Constant.WEBDRIVER.findElement(By.xpath("//form[@id='RegisterForm']//li[@class='email']/label[@class='validation-error']")); }
+    public WebElement getLblPasswordErrorMsg(){ return Constant.WEBDRIVER.findElement(By.xpath("//form[@id='RegisterForm']//li[@class='password']/label[@class='validation-error']")); }
+    public WebElement getLblConfirmPassErrorMsg(){ return Constant.WEBDRIVER.findElement(By.xpath("//form[@id='RegisterForm']//li[@class='confirm-password']/label[@class='validation-error']")); }
+    public WebElement getLblPIDErrorMsg(){ return Constant.WEBDRIVER.findElement(By.xpath("//form[@id='RegisterForm']//li[@class='pid-number']/label[@class='validation-error']")); }
+    public WebElement getLblCreateAccountErrorMsg(){ return Constant.WEBDRIVER.findElement(By.xpath("//div[@id='content']/p[@class='message error']")); }
 
     //Methods
     public LoginPage gotoLoginPage(){

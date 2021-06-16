@@ -1,4 +1,4 @@
-package page.objects;
+package pageObjects;
 
 public class FAQPage {
 }

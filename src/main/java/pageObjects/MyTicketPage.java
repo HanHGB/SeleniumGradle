@@ -1,4 +1,4 @@
-package page.objects;
+package pageObjects;
 
 import common.Constant;
 import common.Utilities;
@@ -38,6 +38,14 @@ public class MyTicketPage extends GeneralPage{
                 + "']/following-sibling::td[.='" + departDate + "']/following-sibling::td[.='" + bookDate
                 + "']/following-sibling::td[.='" + expiredDate +"']/following-sibling::td[.='" + status
                 + "']/following-sibling::td/input"));
+    }
+
+    public WebElement getLblFilterMsg(){
+        return Constant.WEBDRIVER.findElement(By.xpath("//div[@class='Filter']//select[@name='FilterStatus']"));
+    }
+
+    public WebElement getLblFilterDateErrorMsg(){
+        return Constant.WEBDRIVER.findElement(By.xpath("///form[@name='FilterForm']//div[@class='Filter']/div[@class='error message']"));
     }
 
     //Methods

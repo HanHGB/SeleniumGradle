@@ -1,11 +1,11 @@
-package page.objects;
+package pageObjects;
 
 import common.Constant;
 import common.Utilities;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
-public class TrainTicketPricingListPage {
+public class TrainTicketPricingListPage extends GeneralPage{
 
     //Declare
     Utilities utilities = new Utilities();

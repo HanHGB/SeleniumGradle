@@ -1,4 +1,4 @@
-package page.objects;
+package pageObjects;
 
 import common.Constant;
 import org.openqa.selenium.By;
@@ -12,6 +12,9 @@ public class ForgotPasswordPage extends GeneralPage {
     }
     public WebElement getBtnSendInstructions() {
         return Constant.WEBDRIVER.findElement(By.xpath("//form//input[@type='submit']"));
+    }
+    public WebElement getLblEmailErrorMsg() {
+        return Constant.WEBDRIVER.findElement(By.xpath("//div[@id='content']//li[@class='email']/label[@class='validation-error']"));
     }
 
     //Methods
