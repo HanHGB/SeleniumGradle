@@ -58,6 +58,5 @@ public class MyTicketPage extends GeneralPage{
                 expiredDate, status);
         utilities.scrollDownPage(btnCancel);
         btnCancel.click();
-
     }
 }

@@ -21,7 +21,7 @@ public class RegisterPage extends GeneralPage {
         return new LoginPage();
     }
 
-    public ConfirmCodePage gotoConfirmPasswordPage(){
+    public ConfirmCodePage gotoConfirmCodePage(){
         this.getLinkConfirmCode().click();
         return new ConfirmCodePage();
     }

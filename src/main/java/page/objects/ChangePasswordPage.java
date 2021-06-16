@@ -10,7 +10,7 @@ public class ChangePasswordPage extends GeneralPage {
     public WebElement getTxtCurrentPassword(){ return Constant.WEBDRIVER.findElement(By.xpath("//form[@id='ChangePW']//input[@id='currentPassword']")); }
     public WebElement getTxtNewPassword(){ return Constant.WEBDRIVER.findElement(By.xpath("//form[@id='ChangePW']//input[@id='newPassword']")); }
     public WebElement getTxtConfirmPassword(){ return Constant.WEBDRIVER.findElement(By.xpath("//form[@id='ChangePW']//input[@id='confirmPassword']")); }
-    public WebElement getBtnChangePassword(){ return Constant.WEBDRIVER.findElement(By.xpath("//form[@id='ChangePW']//input[@id='Change password']")); }
+    public WebElement getBtnChangePassword(){ return Constant.WEBDRIVER.findElement(By.xpath("//form[@id='ChangePW']//input[@value='Change password']")); }
 
     //Methods
     public ChangePasswordPage changePassword(String currentPassword, String newPassword, String confirmPassword){
