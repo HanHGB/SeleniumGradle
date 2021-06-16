@@ -91,7 +91,7 @@ public class GeneralPage {
         return new TrainTicketPricingListPage();
     }
 
-    public BookTicketPage gotoBookTicket(){
+    public BookTicketPage gotoBookTicketPage(){
         this.getTabBookTicket().click();
         return new BookTicketPage();
     }
