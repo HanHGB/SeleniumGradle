@@ -7,18 +7,18 @@ import org.openqa.selenium.WebElement;
 public class LoginPage extends GeneralPage {
 
     //Elements
-    public WebElement getTxtUsername() {
+    protected WebElement getTxtUsername() {
         return Constant.WEBDRIVER.findElement(By.xpath("//input[@id='username']"));
     }
-    public WebElement getTxtPassword() {
+    protected WebElement getTxtPassword() {
         return Constant.WEBDRIVER.findElement(By.xpath("//input[@id='password']"));
     }
-    public WebElement getBtnLogin() { return Constant.WEBDRIVER.findElement(By.xpath("//input[@value='Login']")); }
-    public WebElement getLblLoginErrorMsg() { return Constant.WEBDRIVER.findElement(By.xpath("//p[@class='message error LoginForm']")); }
-    public WebElement getLinkRegisterPage() { return Constant.WEBDRIVER.findElement(By.xpath("//div[@id='content']//a[@href='Register.cshtml']")); }
-    public WebElement getLinkForgotPasswordPage() { return Constant.WEBDRIVER.findElement(By.xpath("//div[@id='content']//a[@href='/Account/ForgotPassword.cshtml']")); }
-    public WebElement getLblEmailErrorMsg() { return Constant.WEBDRIVER.findElement(By.xpath("//li[@class='username']/label[@class='validation-error']")); }
-    public WebElement getLblPasswordErrorMsg() { return Constant.WEBDRIVER.findElement(By.xpath("//li[@class='password']/label[@class='validation-error']")); }
+    protected WebElement getBtnLogin() { return Constant.WEBDRIVER.findElement(By.xpath("//input[@value='Login']")); }
+    protected WebElement getLblLoginErrorMsg() { return Constant.WEBDRIVER.findElement(By.xpath("//p[@class='message error LoginForm']")); }
+    protected WebElement getLinkRegisterPage() { return Constant.WEBDRIVER.findElement(By.xpath("//div[@id='content']//a[@href='Register.cshtml']")); }
+    protected WebElement getLinkForgotPasswordPage() { return Constant.WEBDRIVER.findElement(By.xpath("//div[@id='content']//a[@href='/Account/ForgotPassword.cshtml']")); }
+    protected WebElement getLblEmailErrorMsg() { return Constant.WEBDRIVER.findElement(By.xpath("//li[@class='username']/label[@class='validation-error']")); }
+    protected WebElement getLblPasswordErrorMsg() { return Constant.WEBDRIVER.findElement(By.xpath("//li[@class='password']/label[@class='validation-error']")); }
 
     //Methods
     public HomePage login(String username, String password) {

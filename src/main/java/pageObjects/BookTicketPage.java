@@ -8,35 +8,35 @@ import org.openqa.selenium.WebElement;
 public class BookTicketPage extends GeneralPage {
 
     //Elements
-    public WebElement getCbxDepartDate(){
+    protected WebElement getCbxDepartDate(){
         return Constant.WEBDRIVER.findElement(By.xpath("//form//select[@name='Date']"));
     }
 
-    public WebElement getCbxDepartStation(){
+    protected WebElement getCbxDepartStation(){
         return Constant.WEBDRIVER.findElement(By.xpath("//form//select[@name='DepartStation']"));
     }
 
-    public WebElement getCbxArriveStation(){
+    protected WebElement getCbxArriveStation(){
         return Constant.WEBDRIVER.findElement(By.xpath("//form//select[@name='ArriveStation']"));
     }
 
-    public WebElement getCbxSeatType(){
+    protected WebElement getCbxSeatType(){
         return Constant.WEBDRIVER.findElement(By.xpath("//form//select[@name='SeatType']"));
     }
 
-    public WebElement getCbxTicketAmount(){
+    protected WebElement getCbxTicketAmount(){
         return Constant.WEBDRIVER.findElement(By.xpath("//form//select[@name='TicketAmount']"));
     }
 
-    public WebElement getBtnBookTicket(){
+    protected WebElement getBtnBookTicket(){
         return Constant.WEBDRIVER.findElement(By.xpath("//form//input[@value='Book ticket']"));
     }
 
-    public WebElement getLblTicketAmountErrorMsg(){
+    protected WebElement getLblTicketAmountErrorMsg(){
         return Constant.WEBDRIVER.findElement(By.xpath("//form//label[@class='validation-error']"));
     }
 
-    public WebElement getLblBookTicketErrorMsg(){
+    protected WebElement getLblBookTicketErrorMsg(){
         return Constant.WEBDRIVER.findElement(By.xpath("//div[@id='content']//p[@class='message error']"));
     }
 
@@ -53,7 +53,6 @@ public class BookTicketPage extends GeneralPage {
         utilities.selectValueInCbx(getCbxTicketAmount(), String.valueOf(amountTicket));
 
         this.getBtnBookTicket().click();
-
         return new BookTicketSuccessfullyPage();
     }
 }

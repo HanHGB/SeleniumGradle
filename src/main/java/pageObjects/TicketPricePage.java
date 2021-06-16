@@ -7,11 +7,11 @@ import org.openqa.selenium.WebElement;
 public class TicketPricePage extends GeneralPage {
 
     //Elements
-    public WebElement getTxtTrainName(){
+    protected WebElement getTxtTrainName(){
         return Constant.WEBDRIVER.findElement(By.xpath("//table[@class='MyTable MedTable']//tr[@class='TableSmallHeader']/th"));
     }
 
-    public WebElement getBtnBookTicket(String seatType){
+    protected WebElement getBtnBookTicket(String seatType){
         return Constant.WEBDRIVER.findElement(By.xpath("//table[@class='NoBorder']//td[contains(.,'" + seatType +"')]/."
                 + ".//a"));
     }

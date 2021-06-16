@@ -8,26 +8,26 @@ import org.openqa.selenium.WebElement;
 public class TimetablePage extends GeneralPage{
 
     //Declare
-    Utilities utilities = new Utilities();
+    private Utilities utilities = new Utilities();
 
     //Elements
-    public WebElement getTxtDepartStation(String departStation) {
+    protected WebElement getTxtDepartStation(String departStation) {
         return Constant.WEBDRIVER.findElement(By.xpath("//table[@class='MyTable WideTable']//td[count(//th[.='Depart Station']"
                 + "/preceding-sibling::th)+1][.='" + departStation + "']"));
     }
 
-    public WebElement getTxtArriveStation(String arriveStation) {
+    protected WebElement getTxtArriveStation(String arriveStation) {
         return Constant.WEBDRIVER.findElement(By.xpath("//table[@class='MyTable WideTable']//td[count(//th[.='Depart Station']"
                 + "/preceding-sibling::th)+1][.='" + arriveStation + "']"));
     }
 
-    public WebElement getLinkCheckPrice(String departStation, String arriveStation){
+    protected WebElement getLinkCheckPrice(String departStation, String arriveStation){
         return Constant.WEBDRIVER.findElement(By.xpath("//table[@class='MyTable WideTable']//td[count(//th[.='Depart Station']/preceding-sibling::th)+1][.='" + departStation
                         + "']/../td[count(//th[.='Arrive Station']/preceding-sibling::th)+1][.='" + arriveStation
                         + "']/../td[count(//th[.='Check Price']/preceding-sibling::th)+1]"));
     }
 
-    public WebElement getLinkBookTicket(String departStation, String arriveStation){
+    protected WebElement getLinkBookTicket(String departStation, String arriveStation){
         return Constant.WEBDRIVER.findElement(By.xpath("//table[@class='MyTable WideTable']//td[count(//th[.='Depart Station']/preceding-sibling::th)+1][.='" + departStation
                 + "']/../td[count(//th[.='Arrive Station']/preceding-sibling::th)+1][.='" + arriveStation
                 + "']/../td[count(//th[.='Book ticket']/preceding-sibling::th)+1]"));

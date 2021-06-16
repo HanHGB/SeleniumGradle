@@ -8,10 +8,10 @@ import org.openqa.selenium.WebElement;
 public class TrainTicketPricingListPage extends GeneralPage{
 
     //Declare
-    Utilities utilities = new Utilities();
+    private Utilities utilities = new Utilities();
 
     //Elements
-    public WebElement getBtnCheckPrice(String departStation, String arriveStation) {
+    protected WebElement getBtnCheckPrice(String departStation, String arriveStation) {
         return Constant.WEBDRIVER.findElement(By.xpath("//table[@class='NoBorder']//li[text()=" + departStation + "to" +
                         arriveStation + "]/../following-sibling::td/a[text()='Check Price']"));
     }

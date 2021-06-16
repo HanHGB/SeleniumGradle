@@ -11,27 +11,27 @@ public class MyTicketPage extends GeneralPage{
     Utilities utilities = new Utilities();
 
     //Elements
-    public WebElement getCbxDepartStationFilter(){
+    protected WebElement getCbxDepartStationFilter(){
         return Constant.WEBDRIVER.findElement(By.xpath("//div[@class='Filter']//select[@name='FilterDpStation']"));
     }
 
-    public WebElement getCbxArriveStationFilter(){
+    protected WebElement getCbxArriveStationFilter(){
         return Constant.WEBDRIVER.findElement(By.xpath("//div[@class='Filter']//select[@name='FilterArStation']"));
     }
 
-    public WebElement getTxtDepartDateFilter(){
+    protected WebElement getTxtDepartDateFilter(){
         return Constant.WEBDRIVER.findElement(By.xpath("//div[@class='Filter']//input[@name='FilterDpDate']"));
     }
 
-    public WebElement getCbxStatusFilter(){
+    protected WebElement getCbxStatusFilter(){
         return Constant.WEBDRIVER.findElement(By.xpath("//div[@class='Filter']//select[@name='FilterStatus']"));
     }
 
-    public WebElement getBtnFilter(){
+    protected WebElement getBtnFilter(){
         return Constant.WEBDRIVER.findElement(By.xpath("//div[@class='Filter']//input[@value='Apply Filter']"));
     }
 
-    public WebElement getBtnCancel(String departStation, String arriveStation, String seatType, String departDate,
+    protected WebElement getBtnCancel(String departStation, String arriveStation, String seatType, String departDate,
                                    String bookDate, String expiredDate, String status){
         return Constant.WEBDRIVER.findElement(By.xpath("//table[@class='MyTable']//td[.='" + departStation
                 + "']/following-sibling::td[.='" + arriveStation + "']/following-sibling::td[.='" + seatType
@@ -40,11 +40,11 @@ public class MyTicketPage extends GeneralPage{
                 + "']/following-sibling::td/input"));
     }
 
-    public WebElement getLblFilterMsg(){
+    protected WebElement getLblFilterMsg(){
         return Constant.WEBDRIVER.findElement(By.xpath("//div[@class='Filter']//select[@name='FilterStatus']"));
     }
 
-    public WebElement getLblFilterDateErrorMsg(){
+    protected WebElement getLblFilterDateErrorMsg(){
         return Constant.WEBDRIVER.findElement(By.xpath("///form[@name='FilterForm']//div[@class='Filter']/div[@class='error message']"));
     }
 

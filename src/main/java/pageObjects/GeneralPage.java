@@ -8,37 +8,51 @@ import org.openqa.selenium.WebElement;
 public class GeneralPage {
 
     //Elements
+//    protected WebElement getTabLogin(){
+//        return Constant.WEBDRIVER.findElement(By.xpath("//div[@id='menu']//a[@href='/Account/Login.cshtml']"));
+//    }
+
     protected WebElement getTabLogin(){
-        return Constant.WEBDRIVER.findElement(By.xpath("//div[@id='menu']//a[@href='/Account/Login.cshtml']"));
+        return Constant.WEBDRIVER.findElement(By.cssSelector("a[href^='/Account/Login.cshtml']"));
     }
+
     protected WebElement getTabLogout(){
-        return Constant.WEBDRIVER.findElement(By.xpath("//div[@id='menu']//a[@href='/Account/Logout']"));
+        return Constant.WEBDRIVER.findElement(By.cssSelector("a[href^='/Account/Logout']"));
     }
+
     protected WebElement getTabFAQ(){
-        return Constant.WEBDRIVER.findElement(By.xpath("//div[@id='menu']//a[@href='/Page/FAQ.cshtml']"));
+        return Constant.WEBDRIVER.findElement(By.cssSelector("a[href^='#']"));
     }
+
     protected WebElement getTabContact(){
-        return Constant.WEBDRIVER.findElement(By.xpath("//div[@id='menu']//a[@href='/Page/Contact.cshtml']"));
+        return Constant.WEBDRIVER.findElement(By.cssSelector("a[href^='/Page/Contact.cshtml']"));
     }
+
     protected WebElement getTabTimetable(){
-        return Constant.WEBDRIVER.findElement(By.xpath("//div[@id='menu']//a[@href='TrainTimeListPage.cshtml']"));
+        return Constant.WEBDRIVER.findElement(By.cssSelector("a[href^='TrainTimeListPage.cshtml']"));
     }
+
     protected WebElement getTabTicketPrice(){
-        return Constant.WEBDRIVER.findElement(By.xpath("//div[@id='menu']//a[@href='/Page/TrainPriceListPage.cshtml']"));
+        return Constant.WEBDRIVER.findElement(By.cssSelector("a[href^='/Page/TrainPriceListPage.cshtml']"));
     }
+
     protected WebElement getTabBookTicket(){
-        return Constant.WEBDRIVER.findElement(By.xpath("//div[@id='menu']//a[@href='/Page/BookTicketPage.cshtml']"));
+        return Constant.WEBDRIVER.findElement(By.cssSelector("a[href^='/Page/BookTicketPage.cshtml']"));
     }
+
     protected WebElement getTabRegister(){
-        return Constant.WEBDRIVER.findElement(By.xpath("//div[@id='menu']//a[@href='/Account/Register.cshtml']"));
+        return Constant.WEBDRIVER.findElement(By.cssSelector("a[href^='/Account/Register.cshtml']"));
     }
-    protected WebElement getLblWelcomeMessage(){
-        return Constant.WEBDRIVER.findElement(By.xpath("//div[@id='menu']//a[@href='/Page/ManageTicket.cshtml']"));
-    }
+
     protected WebElement getTabMyTicket(){
-        return Constant.WEBDRIVER.findElement(By.xpath("//div[@id='menu']//a[@href='/Account/ChangePassword.cshtml']"));
+        return Constant.WEBDRIVER.findElement(By.cssSelector("a[href^='/Page/ManageTicket.cshtml']"));
     }
+
     protected WebElement getTabChangePassword(){
+        return Constant.WEBDRIVER.findElement(By.cssSelector("a[href^='/Account/ChangePassword.cshtml']"));
+    }
+
+    protected WebElement getLblWelcomeMessage(){
         return Constant.WEBDRIVER.findElement(By.xpath("//div[@class='account']/strong"));
     }
 

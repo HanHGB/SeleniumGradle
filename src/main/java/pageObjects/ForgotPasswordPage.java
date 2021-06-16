@@ -7,13 +7,15 @@ import org.openqa.selenium.WebElement;
 public class ForgotPasswordPage extends GeneralPage {
 
     //Elements
-    public WebElement getTxtEmailAddress() {
+    protected WebElement getTxtEmailAddress() {
         return Constant.WEBDRIVER.findElement(By.xpath("//form//input[@id='email']"));
     }
-    public WebElement getBtnSendInstructions() {
+
+    protected WebElement getBtnSendInstructions() {
         return Constant.WEBDRIVER.findElement(By.xpath("//form//input[@type='submit']"));
     }
-    public WebElement getLblEmailErrorMsg() {
+
+    protected WebElement getLblEmailErrorMsg() {
         return Constant.WEBDRIVER.findElement(By.xpath("//div[@id='content']//li[@class='email']/label[@class='validation-error']"));
     }
 
