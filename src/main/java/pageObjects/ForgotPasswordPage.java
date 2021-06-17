@@ -12,10 +12,9 @@ public class ForgotPasswordPage extends GeneralPage {
     protected WebElement getLblEmailErrorMsg() { return Constant.WEBDRIVER.findElement(By.xpath("//div[@id='content']//li[@class='email']/label[@class='validation-error']")); }
 
     //Methods
-    public ForgotPasswordPage forgotPassword(String email){
+    public void forgotPassword(String email){
         this.getTxtEmailAddress().sendKeys(email);
         this.getBtnSendInstructions().click();
-        return new ForgotPasswordPage();
     }
 
     public String getEmailErrorMsg(){

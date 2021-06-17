@@ -16,9 +16,8 @@ public class TicketPricePage extends GeneralPage {
     }
 
     //Methods
-    public BookTicketPage gotoBookTicketPage(String seatType){
+    public void gotoBookTicketPage(String seatType){
         this.getBtnBookTicket(seatType).click();
-        return new BookTicketPage();
     }
 
     public String getTrainName(){

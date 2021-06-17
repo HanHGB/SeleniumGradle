@@ -38,6 +38,8 @@ public class BookTicketSuccessfullyPage extends GeneralPage{
         return Constant.WEBDRIVER.findElement(By.xpath("//table//td[count(//th[.='Total Price']/preceding-sibling::th)+1]"));
     }
 
+    protected WebElement getLblTitle() { return Constant.WEBDRIVER.findElement(By.tagName("h1")); }
+
     //Methods
     public String getDepartStation(){
         return this.getTxtDepartStation().getText();
@@ -69,5 +71,9 @@ public class BookTicketSuccessfullyPage extends GeneralPage{
 
     public String getTotalPrice(){
         return this.getTxtTotalPrice().getText();
+    }
+
+    public String getTitle(){
+        return this.getLblTitle().getText();
     }
 }

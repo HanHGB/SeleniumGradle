@@ -1,10 +1,14 @@
 package pageObjects;
 
 import common.Constant;
+import common.Utilities;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 public class LoginPage extends GeneralPage {
+
+    //Declare
+    private Utilities utilities = new Utilities();
 
     //Elements
     protected WebElement getTxtUsername() { return Constant.WEBDRIVER.findElement(By.xpath("//input[@id='username']")); }
@@ -15,22 +19,22 @@ public class LoginPage extends GeneralPage {
     protected WebElement getLinkForgotPasswordPage() { return Constant.WEBDRIVER.findElement(By.xpath("//div[@id='content']//a[@href='/Account/ForgotPassword.cshtml']")); }
     protected WebElement getLblEmailErrorMsg() { return Constant.WEBDRIVER.findElement(By.xpath("//li[@class='username']/label[@class='validation-error']")); }
     protected WebElement getLblPasswordErrorMsg() { return Constant.WEBDRIVER.findElement(By.xpath("//li[@class='password']/label[@class='validation-error']")); }
+    protected WebElement getLblTitle() { return Constant.WEBDRIVER.findElement(By.tagName("h1")); }
 
     //Methods
-    public HomePage login(String username, String password) {
+    public void login(String username, String password) {
 
-        //Submit login credentials
+        //Clear the value in textbox before
+        utilities.clearValueInTxt(new WebElement[]{getTxtUsername(), getTxtPassword()});
+
         this.getTxtUsername().sendKeys(username);
         this.getTxtPassword().sendKeys(password);
+        utilities.scrollDownPage(getBtnLogin());
         this.getBtnLogin().click();
-
-        //Land on Hone page
-        return new HomePage();
     }
 
-    public RegisterPage gotoRegisterPage() {
+    public void gotoRegisterPage() {
         this.getLinkRegisterPage().click();
-        return new RegisterPage();
     }
 
     public ForgotPasswordPage gotoForgotPasswordPage() {
@@ -48,5 +52,9 @@ public class LoginPage extends GeneralPage {
 
     public String getPasswordErrorMsg(){
         return this.getLblPasswordErrorMsg().getText();
+    }
+
+    public String getTitle(){
+        return this.getLblTitle().getText();
     }
 }

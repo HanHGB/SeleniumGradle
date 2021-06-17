@@ -10,8 +10,7 @@ public class HomePage extends GeneralPage {
     protected WebElement getLinkRegister() { return Constant.WEBDRIVER.findElement(By.xpath("//div[@id='content']//a[@href='/Account/Register.cshtml']")); }
 
     //Methods
-    public HomePage open(){
+    public void open(){
         Constant.WEBDRIVER.navigate().to(Constant.RAILWAY_URL);
-        return this;
     }
 }

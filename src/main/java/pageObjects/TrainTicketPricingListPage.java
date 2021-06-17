@@ -17,11 +17,10 @@ public class TrainTicketPricingListPage extends GeneralPage{
     }
 
     //Methods
-    public TicketPricePage checkPrice(String departStation, String arriveStation){
+    public void checkPrice(String departStation, String arriveStation){
 
         WebElement btnCheckPrice = this.getBtnCheckPrice(departStation, arriveStation);
         utilities.scrollDownPage(btnCheckPrice);
         btnCheckPrice.click();
-        return new TicketPricePage();
     }
 }

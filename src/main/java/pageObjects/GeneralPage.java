@@ -15,63 +15,56 @@ public class GeneralPage {
     protected WebElement getTabTimetable(){ return Constant.WEBDRIVER.findElement(By.cssSelector("a[href^='TrainTimeListPage.cshtml']")); }
     protected WebElement getTabTicketPrice(){ return Constant.WEBDRIVER.findElement(By.cssSelector("a[href^='/Page/TrainPriceListPage.cshtml']")); }
     protected WebElement getTabBookTicket(){ return Constant.WEBDRIVER.findElement(By.cssSelector("a[href^='/Page/BookTicketPage.cshtml']")); }
-    protected WebElement getTabRegister(){ return Constant.WEBDRIVER.findElement(By.cssSelector("a[href^='/Account/Register.cshtml']")); }
+    protected WebElement getTabRegister(){ return Constant.WEBDRIVER.findElement(By.xpath("//div[@id='menu']//a[@href='/Account/Register.cshtml']")); }
     protected WebElement getTabMyTicket(){ return Constant.WEBDRIVER.findElement(By.cssSelector("a[href^='/Page/ManageTicket.cshtml']")); }
     protected WebElement getTabChangePassword(){ return Constant.WEBDRIVER.findElement(By.cssSelector("a[href^='/Account/ChangePassword.cshtml']")); }
     protected WebElement getLblWelcomeMessage(){ return Constant.WEBDRIVER.findElement(By.xpath("//div[@class='account']/strong")); }
+    protected WebElement getTxtTabName(String tabName){ return Constant.WEBDRIVER.findElement(By.xpath("//div[@id='menu']//span[text()='" + tabName + "']")); }
 
     //Methods
     public String getWelcomeMessage(){
         return this.getLblWelcomeMessage().getText();
     }
 
-    public LoginPage gotoLoginPage(){
+    public void gotoLoginPage(){
         this.getTabLogin().click();
-        return new LoginPage();
     }
 
-    public HomePage logout(){
+    public void logout(){
         this.getTabLogout().click();
-        return new HomePage();
     }
 
-    public FAQPage gotoFAQPage(){
+    public void gotoFAQPage(){
         this.getTabFAQ().click();
-        return new FAQPage();
     }
 
-    public ContactPage gotoContactPage(){
+    public void gotoContactPage(){
         this.getTabContact().click();
-        return new ContactPage();
     }
 
-    public TimetablePage gotoTimetable(){
+    public void gotoTimetablePage(){
         this.getTabTimetable().click();
-        return new TimetablePage();
     }
 
-    public TrainTicketPricingListPage gotoTicketPrice(){
+    public void gotoTicketPricePage(){
         this.getTabTicketPrice().click();
-        return new TrainTicketPricingListPage();
     }
 
-    public BookTicketPage gotoBookTicketPage(){
+    public void gotoBookTicketPage(){
         this.getTabBookTicket().click();
-        return new BookTicketPage();
     }
 
-    public RegisterPage gotoRegisterPage(){
-        this.getTabRegister().click();
-        return new RegisterPage();
-    }
+    public void gotoRegisterPage(){  this.getTabRegister().click(); }
 
-    public MyTicketPage gotoMyTicket(){
+    public void gotoMyTicketPage(){
         this.getTabMyTicket().click();
-        return new MyTicketPage();
     }
 
-    public ChangePasswordPage gotoChangePassword(){
+    public void gotoChangePasswordPage(){
         this.getTabChangePassword().click();
-        return new ChangePasswordPage();
+    }
+
+    public boolean getTabName(String tabName){
+        return this.getTxtTabName(tabName).isDisplayed();
     }
 }

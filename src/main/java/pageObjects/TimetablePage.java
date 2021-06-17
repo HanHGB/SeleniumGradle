@@ -34,20 +34,18 @@ public class TimetablePage extends GeneralPage{
     }
 
     //Methods
-    public TicketPricePage gotoCheckPricePage(String departStation, String arriveStation){
+    public void checkPrice(String departStation, String arriveStation){
 
         WebElement linkCheckPrice = this.getLinkCheckPrice(departStation, arriveStation);
         utilities.scrollDownPage(linkCheckPrice);
         linkCheckPrice.click();
-        return new TicketPricePage();
     }
 
-    public BookTicketPage gotoBookTicketPage(String departStation, String arriveStation){
+    public void bookTicket(String departStation, String arriveStation){
 
         WebElement linkBookTicket = this.getLinkBookTicket(departStation, arriveStation);
         utilities.scrollDownPage(this.getLinkBookTicket(departStation, arriveStation));
         this.getLinkBookTicket(departStation, arriveStation).click();
-        return new BookTicketPage();
     }
 
     public String getDepartStation(String departStation){
@@ -55,4 +53,6 @@ public class TimetablePage extends GeneralPage{
     }
 
     public String getArriveStation(String arriveStation){ return this.getTxtDepartStation(arriveStation).getText(); }
+
+
 }

@@ -1,10 +1,15 @@
 package pageObjects;
 
 import common.Constant;
+import common.Utilities;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 public class RegisterPage extends GeneralPage {
+
+    //Declare
+    private Utilities utilities = new Utilities();
+
 
     //Elements
     protected WebElement getLinkLogin(){ return Constant.WEBDRIVER.findElement(By.xpath("//div[@id='content']//a[@href='/Account/Login.cshtml']")); }
@@ -19,11 +24,11 @@ public class RegisterPage extends GeneralPage {
     protected WebElement getLblConfirmPassErrorMsg(){ return Constant.WEBDRIVER.findElement(By.xpath("//form[@id='RegisterForm']//li[@class='confirm-password']/label[@class='validation-error']")); }
     protected WebElement getLblPIDErrorMsg(){ return Constant.WEBDRIVER.findElement(By.xpath("//form[@id='RegisterForm']//li[@class='pid-number']/label[@class='validation-error']")); }
     protected WebElement getLblCreateAccountErrorMsg(){ return Constant.WEBDRIVER.findElement(By.xpath("//div[@id='content']/p[@class='message error']")); }
+    protected WebElement getLblRegisterMsg(){ return Constant.WEBDRIVER.findElement(By.xpath("//div[@id='content']/p")); }
 
     //Methods
-    public LoginPage gotoLoginPage(){
+    public void gotoLoginPage(){
         this.getLinkLogin().click();
-        return new LoginPage();
     }
 
     public ConfirmCodePage gotoConfirmCodePage(){
@@ -31,14 +36,16 @@ public class RegisterPage extends GeneralPage {
         return new ConfirmCodePage();
     }
 
-    public HomePage register(String email, String password, String confirmPassword, String PID){
+    public void register(String email, String password, String confirmPassword, String PID){
+
+        utilities.clearValueInTxt(new WebElement[]{getTxtEmail(), getTxtPassword(), getTxtConfirmPassword(), getTxtPID()});
+
         this.getTxtEmail().sendKeys(email);
         this.getTxtPassword().sendKeys(password);
         this.getTxtConfirmPassword().sendKeys(confirmPassword);
         this.getTxtPID().sendKeys(PID);
+        utilities.scrollDownPage(getBtnRegister());
         this.getBtnRegister().click();
-
-        return new HomePage();
     }
 
     public String getEmailErrorMsg(){
@@ -59,5 +66,9 @@ public class RegisterPage extends GeneralPage {
 
     public String getCreateAccountErrorMsg(){
         return this.getLblCreateAccountErrorMsg().getText();
+    }
+
+    public String getRegisterMsg(){
+        return this.getLblRegisterMsg().getText();
     }
 }

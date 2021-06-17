@@ -1,36 +1,48 @@
-common/Constant.java
- common.Constant
+pageObjects/BookTicketSuccessfullyPage.java
+ pageObjects.BookTicketSuccessfullyPage
 common/Utilities.java
  common.Utilities
-testCases/test.java
- testCases.test
+pageObjects/LoginPage.java
+ pageObjects.LoginPage
+common/Constant.java
+ common.Constant
+pageObjects/GeneralPage.java
+ pageObjects.GeneralPage
 pageObjects/FAQPage.java
  pageObjects.FAQPage
+testcases/BookTicketTest.java
+ testcases.BookTicketTest
+pageObjects/ForgotPasswordPage.java
+ pageObjects.ForgotPasswordPage
+pageObjects/HomePage.java
+ pageObjects.HomePage
+pageObjects/TicketPricePage.java
+ pageObjects.TicketPricePage
+pageObjects/ContactPage.java
+ pageObjects.ContactPage
+pageObjects/ChangePasswordPage.java
+ pageObjects.ChangePasswordPage
+pageObjects/ConfirmCodePage.java
+ pageObjects.ConfirmCodePage
+pageObjects/TrainTicketPricingListPage.java
+ pageObjects.TrainTicketPricingListPage
 pageObjects/BookTicketPage.java
  pageObjects.BookTicketPage
 pageObjects/TimetablePage.java
  pageObjects.TimetablePage
-pageObjects/ContactPage.java
- pageObjects.ContactPage
-pageObjects/BookTicketSuccessfullyPage.java
- pageObjects.BookTicketSuccessfullyPage
-pageObjects/ConfirmCodePage.java
- pageObjects.ConfirmCodePage
 pageObjects/MyTicketPage.java
  pageObjects.MyTicketPage
-pageObjects/GeneralPage.java
- pageObjects.GeneralPage
-pageObjects/HomePage.java
- pageObjects.HomePage
-pageObjects/TrainTicketPricingListPage.java
- pageObjects.TrainTicketPricingListPage
+testcases/ChangePasswordTest.java
+ testcases.ChangePasswordTest
+testcases/MyTicketTest.java
+ testcases.MyTicketTest
+testcases/NavigateToPages.java
+ testcases.NavigateToPages
+testcases/BaseTest.java
+ testcases.BaseTest
+testcases/LoginTest.java
+ testcases.LoginTest
+testcases/RegisterTest.java
+ testcases.RegisterTest
 pageObjects/RegisterPage.java
  pageObjects.RegisterPage
-pageObjects/ForgotPasswordPage.java
- pageObjects.ForgotPasswordPage
-pageObjects/TicketPricePage.java
- pageObjects.TicketPricePage
-pageObjects/ChangePasswordPage.java
- pageObjects.ChangePasswordPage
-pageObjects/LoginPage.java
- pageObjects.LoginPage

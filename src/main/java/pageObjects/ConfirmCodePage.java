@@ -10,9 +10,8 @@ public class ConfirmCodePage extends GeneralPage {
     protected WebElement getBtnConfirm(){ return Constant.WEBDRIVER.findElement(By.xpath("//input[@type='submit']")); }
 
     //Methods
-    public ConfirmCodePage confirmationCode(String code){
+    public void confirmationCode(String code){
         this.getTxtCode().sendKeys(code);
         this.getBtnConfirm().click();
-        return new ConfirmCodePage();
     }
 }
