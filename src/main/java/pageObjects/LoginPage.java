@@ -11,15 +11,41 @@ public class LoginPage extends GeneralPage {
     private Utilities utilities = new Utilities();
 
     //Elements
-    protected WebElement getTxtUsername() { return Constant.WEBDRIVER.findElement(By.xpath("//input[@id='username']")); }
-    protected WebElement getTxtPassword() { return Constant.WEBDRIVER.findElement(By.xpath("//input[@id='password']")); }
-    protected WebElement getBtnLogin() { return Constant.WEBDRIVER.findElement(By.xpath("//input[@value='Login']")); }
-    protected WebElement getLblLoginErrorMsg() { return Constant.WEBDRIVER.findElement(By.xpath("//p[@class='message error LoginForm']")); }
-    protected WebElement getLinkRegisterPage() { return Constant.WEBDRIVER.findElement(By.xpath("//div[@id='content']//a[@href='Register.cshtml']")); }
-    protected WebElement getLinkForgotPasswordPage() { return Constant.WEBDRIVER.findElement(By.xpath("//div[@id='content']//a[@href='/Account/ForgotPassword.cshtml']")); }
-    protected WebElement getLblEmailErrorMsg() { return Constant.WEBDRIVER.findElement(By.xpath("//li[@class='username']/label[@class='validation-error']")); }
-    protected WebElement getLblPasswordErrorMsg() { return Constant.WEBDRIVER.findElement(By.xpath("//li[@class='password']/label[@class='validation-error']")); }
-    protected WebElement getLblTitle() { return Constant.WEBDRIVER.findElement(By.tagName("h1")); }
+    protected WebElement getTxtUsername() {
+        return Constant.WEBDRIVER.findElement(By.xpath("//input[@id='username']"));
+    }
+
+    protected WebElement getTxtPassword() {
+        return Constant.WEBDRIVER.findElement(By.xpath("//input[@id='password']"));
+    }
+
+    protected WebElement getBtnLogin() {
+        return Constant.WEBDRIVER.findElement(By.xpath("//input[@value='Login']"));
+    }
+
+    protected WebElement getLblLoginErrorMsg() {
+        return Constant.WEBDRIVER.findElement(By.xpath("//p[@class='message error LoginForm']"));
+    }
+
+    protected WebElement getLinkRegisterPage() {
+        return Constant.WEBDRIVER.findElement(By.xpath("//div[@id='content']//a[@href='Register.cshtml']"));
+    }
+
+    protected WebElement getLinkForgotPasswordPage() {
+        return Constant.WEBDRIVER.findElement(By.xpath("//div[@id='content']//a[@href='/Account/ForgotPassword.cshtml']"));
+    }
+
+    protected WebElement getLblEmailErrorMsg() {
+        return Constant.WEBDRIVER.findElement(By.xpath("//li[@class='username']/label[@class='validation-error']"));
+    }
+
+    protected WebElement getLblPasswordErrorMsg() {
+        return Constant.WEBDRIVER.findElement(By.xpath("//li[@class='password']/label[@class='validation-error']"));
+    }
+
+    protected WebElement getLblTitle() {
+        return Constant.WEBDRIVER.findElement(By.tagName("h1"));
+    }
 
     //Methods
     public void login(String username, String password) {
@@ -42,19 +68,19 @@ public class LoginPage extends GeneralPage {
         return new ForgotPasswordPage();
     }
 
-    public String getLoginErrorMsg(){
+    public String getLoginErrorMsg() {
         return this.getLblLoginErrorMsg().getText();
     }
 
-    public String getEmailErrorMsg(){
+    public String getEmailErrorMsg() {
         return this.getLblEmailErrorMsg().getText();
     }
 
-    public String getPasswordErrorMsg(){
+    public String getPasswordErrorMsg() {
         return this.getLblPasswordErrorMsg().getText();
     }
 
-    public String getTitle(){
+    public String getTitle() {
         return this.getLblTitle().getText();
     }
 }

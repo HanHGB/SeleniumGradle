@@ -5,7 +5,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import pageObjects.*;
 
-public class BookTicketTest extends BaseTest{
+public class BookTicketTest extends BaseTest {
 
     //Declare
     private HomePage homePage = new HomePage();
@@ -15,21 +15,7 @@ public class BookTicketTest extends BaseTest{
     private TimetablePage timetablePage = new TimetablePage();
 
     @Test
-    public void TC04(){
-        System.out.println("TC04: Login page displays when un-logged User clicks on Book ticket tab");
-        homePage.open();
-        homePage.gotoBookTicketPage();
-
-        String actualMsg = loginPage.getTitle();
-        String expectedMsg = "Login Page";
-        String tabTitle = Constant.WEBDRIVER.getTitle().toUpperCase();
-
-        Assert.assertEquals(actualMsg, expectedMsg, "The Book Ticket Page is open when not logging yet");
-        Assert.assertTrue(tabTitle.indexOf("Login".toUpperCase()) != 1);
-    }
-
-    @Test
-    public void TC14(){
+    public void TC14() {
         System.out.println("TC014: User can book 1 ticket at a time");
 
         homePage.open();
@@ -51,7 +37,7 @@ public class BookTicketTest extends BaseTest{
     }
 
     @Test
-    public void TC16(){
+    public void TC16() {
         System.out.println("TC016: User can open \"Book ticket\" page by clicking on \"Book ticket\" link in \"Train timetable\" page");
 
         homePage.open();

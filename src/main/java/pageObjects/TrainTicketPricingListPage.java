@@ -5,7 +5,7 @@ import common.Utilities;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
-public class TrainTicketPricingListPage extends GeneralPage{
+public class TrainTicketPricingListPage extends GeneralPage {
 
     //Declare
     private Utilities utilities = new Utilities();
@@ -13,11 +13,11 @@ public class TrainTicketPricingListPage extends GeneralPage{
     //Elements
     protected WebElement getBtnCheckPrice(String departStation, String arriveStation) {
         return Constant.WEBDRIVER.findElement(By.xpath("//table[@class='NoBorder']//li[text()=" + departStation + "to" +
-                        arriveStation + "]/../following-sibling::td/a[text()='Check Price']"));
+                arriveStation + "]/../following-sibling::td/a[text()='Check Price']"));
     }
 
     //Methods
-    public void checkPrice(String departStation, String arriveStation){
+    public void checkPrice(String departStation, String arriveStation) {
 
         WebElement btnCheckPrice = this.getBtnCheckPrice(departStation, arriveStation);
         utilities.scrollDownPage(btnCheckPrice);

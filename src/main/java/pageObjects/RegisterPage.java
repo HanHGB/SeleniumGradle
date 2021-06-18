@@ -12,31 +12,69 @@ public class RegisterPage extends GeneralPage {
 
 
     //Elements
-    protected WebElement getLinkLogin(){ return Constant.WEBDRIVER.findElement(By.xpath("//div[@id='content']//a[@href='/Account/Login.cshtml']")); }
-    protected WebElement getLinkConfirmCode(){ return Constant.WEBDRIVER.findElement(By.xpath("//div[@id='content']//a[@href='Confirm.cshtml']")); }
-    protected WebElement getTxtEmail(){ return Constant.WEBDRIVER.findElement(By.xpath("//input[@id='email']")); }
-    protected WebElement getTxtPassword(){ return Constant.WEBDRIVER.findElement(By.xpath("//input[@id='password']")); }
-    protected WebElement getTxtConfirmPassword(){ return Constant.WEBDRIVER.findElement(By.xpath("//input[@id='confirmPassword']")); }
-    protected WebElement getTxtPID(){ return Constant.WEBDRIVER.findElement(By.xpath("//input[@id='pid']")); }
-    protected WebElement getBtnRegister(){ return Constant.WEBDRIVER.findElement(By.xpath("//input[@type='submit']")); }
-    protected WebElement getLblEmailErrorMsg(){ return Constant.WEBDRIVER.findElement(By.xpath("//form[@id='RegisterForm']//li[@class='email']/label[@class='validation-error']")); }
-    protected WebElement getLblPasswordErrorMsg(){ return Constant.WEBDRIVER.findElement(By.xpath("//form[@id='RegisterForm']//li[@class='password']/label[@class='validation-error']")); }
-    protected WebElement getLblConfirmPassErrorMsg(){ return Constant.WEBDRIVER.findElement(By.xpath("//form[@id='RegisterForm']//li[@class='confirm-password']/label[@class='validation-error']")); }
-    protected WebElement getLblPIDErrorMsg(){ return Constant.WEBDRIVER.findElement(By.xpath("//form[@id='RegisterForm']//li[@class='pid-number']/label[@class='validation-error']")); }
-    protected WebElement getLblCreateAccountErrorMsg(){ return Constant.WEBDRIVER.findElement(By.xpath("//div[@id='content']/p[@class='message error']")); }
-    protected WebElement getLblRegisterMsg(){ return Constant.WEBDRIVER.findElement(By.xpath("//div[@id='content']/p")); }
+    protected WebElement getLinkLogin() {
+        return Constant.WEBDRIVER.findElement(By.xpath("//div[@id='content']//a[@href='/Account/Login.cshtml']"));
+    }
+
+    protected WebElement getLinkConfirmCode() {
+        return Constant.WEBDRIVER.findElement(By.xpath("//div[@id='content']//a[@href='Confirm.cshtml']"));
+    }
+
+    protected WebElement getTxtEmail() {
+        return Constant.WEBDRIVER.findElement(By.xpath("//input[@id='email']"));
+    }
+
+    protected WebElement getTxtPassword() {
+        return Constant.WEBDRIVER.findElement(By.xpath("//input[@id='password']"));
+    }
+
+    protected WebElement getTxtConfirmPassword() {
+        return Constant.WEBDRIVER.findElement(By.xpath("//input[@id='confirmPassword']"));
+    }
+
+    protected WebElement getTxtPID() {
+        return Constant.WEBDRIVER.findElement(By.xpath("//input[@id='pid']"));
+    }
+
+    protected WebElement getBtnRegister() {
+        return Constant.WEBDRIVER.findElement(By.xpath("//input[@type='submit']"));
+    }
+
+    protected WebElement getLblEmailErrorMsg() {
+        return Constant.WEBDRIVER.findElement(By.xpath("//form[@id='RegisterForm']//li[@class='email']/label[@class='validation-error']"));
+    }
+
+    protected WebElement getLblPasswordErrorMsg() {
+        return Constant.WEBDRIVER.findElement(By.xpath("//form[@id='RegisterForm']//li[@class='password']/label[@class='validation-error']"));
+    }
+
+    protected WebElement getLblConfirmPassErrorMsg() {
+        return Constant.WEBDRIVER.findElement(By.xpath("//form[@id='RegisterForm']//li[@class='confirm-password']/label[@class='validation-error']"));
+    }
+
+    protected WebElement getLblPIDErrorMsg() {
+        return Constant.WEBDRIVER.findElement(By.xpath("//form[@id='RegisterForm']//li[@class='pid-number']/label[@class='validation-error']"));
+    }
+
+    protected WebElement getLblCreateAccountErrorMsg() {
+        return Constant.WEBDRIVER.findElement(By.xpath("//div[@id='content']/p[@class='message error']"));
+    }
+
+    protected WebElement getLblRegisterMsg() {
+        return Constant.WEBDRIVER.findElement(By.xpath("//div[@id='content']/p"));
+    }
 
     //Methods
-    public void gotoLoginPage(){
+    public void gotoLoginPage() {
         this.getLinkLogin().click();
     }
 
-    public ConfirmCodePage gotoConfirmCodePage(){
+    public ConfirmCodePage gotoConfirmCodePage() {
         this.getLinkConfirmCode().click();
         return new ConfirmCodePage();
     }
 
-    public void register(String email, String password, String confirmPassword, String PID){
+    public void register(String email, String password, String confirmPassword, String PID) {
 
         utilities.clearValueInTxt(new WebElement[]{getTxtEmail(), getTxtPassword(), getTxtConfirmPassword(), getTxtPID()});
 
@@ -48,27 +86,27 @@ public class RegisterPage extends GeneralPage {
         this.getBtnRegister().click();
     }
 
-    public String getEmailErrorMsg(){
+    public String getEmailErrorMsg() {
         return this.getLblEmailErrorMsg().getText();
     }
 
-    public String getPasswordErrorMsg(){
+    public String getPasswordErrorMsg() {
         return this.getLblPasswordErrorMsg().getText();
     }
 
-    public String getConfirmPassErrorMsg(){
+    public String getConfirmPassErrorMsg() {
         return this.getLblConfirmPassErrorMsg().getText();
     }
 
-    public String getPIDErrorMsg(){
+    public String getPIDErrorMsg() {
         return this.getLblPIDErrorMsg().getText();
     }
 
-    public String getCreateAccountErrorMsg(){
+    public String getCreateAccountErrorMsg() {
         return this.getLblCreateAccountErrorMsg().getText();
     }
 
-    public String getRegisterMsg(){
+    public String getRegisterMsg() {
         return this.getLblRegisterMsg().getText();
     }
 }

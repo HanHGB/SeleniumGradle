@@ -6,15 +6,19 @@ import org.testng.annotations.Test;
 import pageObjects.HomePage;
 import pageObjects.LoginPage;
 
-public class LoginTest extends BaseTest{
+import java.lang.reflect.Method;
+
+import static common.utils.extentReports.ExtentTestManager.startTest;
+
+public class LoginTest extends BaseTest {
 
     //Declare
     private HomePage homePage = new HomePage();
     private LoginPage loginPage = new LoginPage();
 
     @Test
-    public void TC01(){
-        System.out.println("TC01: User can log into Railway with valid username and password");
+    public void TC01(Method method) {
+        startTest(method.getName(), "User can log into Railway with valid username and password");
         homePage.open();
 
         homePage.gotoLoginPage();
@@ -26,8 +30,10 @@ public class LoginTest extends BaseTest{
     }
 
     @Test
-    public void TC02(){
+    public void TC02(Method method) {
         System.out.println("TC02: User can't login with blank Username textbox");
+        startTest(method.getName(), "User can't login with blank Username textbox");
+
         homePage.logout();
 
         homePage.gotoLoginPage();
@@ -39,8 +45,9 @@ public class LoginTest extends BaseTest{
     }
 
     @Test
-    public void TC03(){
+    public void TC03(Method method) {
         System.out.println("TC03: User cannot log into Railway with invalid password");
+        startTest(method.getName(), "User can't login with blank Username text box");
 
         loginPage.login(Constant.USERNAME, "");
         String actualMsg = loginPage.getLoginErrorMsg();
@@ -50,10 +57,11 @@ public class LoginTest extends BaseTest{
     }
 
     @Test
-    public void TC05(){
+    public void TC05(Method method) {
         System.out.println("TC05: System shows message when user enters wrong password several times");
+        startTest(method.getName(), "System shows message when user enters wrong password several times");
 
-        for (int i = 0; i<4; i++)
+        for (int i = 0; i < 4; i++)
             loginPage.login(Constant.USERNAME, "123456789");
 
         String actualMsg = loginPage.getLoginErrorMsg();

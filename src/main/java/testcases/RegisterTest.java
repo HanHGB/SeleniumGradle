@@ -3,16 +3,17 @@ package testcases;
 import common.Constant;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pageObjects.*;
+import pageObjects.HomePage;
+import pageObjects.RegisterPage;
 
-public class RegisterTest extends BaseTest{
+public class RegisterTest extends BaseTest {
 
     //Declare
     private HomePage homePage = new HomePage();
     private RegisterPage registerPage = new RegisterPage();
 
     @Test
-    public void TC07(){
+    public void TC07() {
         System.out.println("TC07: User can create new account");
         homePage.open();
 
@@ -26,7 +27,7 @@ public class RegisterTest extends BaseTest{
     }
 
     @Test
-    public void TC10(){
+    public void TC10() {
         System.out.println("TC010: User can't create account with \"Confirm password\" is not the same with \"Password\"");
 
         homePage.open();
@@ -40,7 +41,7 @@ public class RegisterTest extends BaseTest{
     }
 
     @Test
-    public void TC11(){
+    public void TC11() {
         System.out.println("TC011: User can't create account while password and PID fields are empty");
 
         registerPage.gotoRegisterPage();
