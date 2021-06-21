@@ -1,14 +1,12 @@
 package pageObjects;
 
 import common.Constant;
-import common.Utilities;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
-public class TrainTicketPricingListPage extends GeneralPage {
+import static common.Utilities.scrollDownPage;
 
-    //Declare
-    private Utilities utilities = new Utilities();
+public class TrainTicketPricingListPage extends GeneralPage {
 
     //Elements
     protected WebElement getBtnCheckPrice(String departStation, String arriveStation) {
@@ -20,7 +18,7 @@ public class TrainTicketPricingListPage extends GeneralPage {
     public void checkPrice(String departStation, String arriveStation) {
 
         WebElement btnCheckPrice = this.getBtnCheckPrice(departStation, arriveStation);
-        utilities.scrollDownPage(btnCheckPrice);
+        scrollDownPage(btnCheckPrice);
         btnCheckPrice.click();
     }
 }

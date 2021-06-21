@@ -1,42 +1,24 @@
 package pageObjects;
 
 import common.Constant;
-import common.Utilities;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
+import static common.Utilities.scrollDownPage;
+
 public class ChangePasswordPage extends GeneralPage {
 
-    //Declare
-    private Utilities utilities = new Utilities();
-
     //Elements
-    protected WebElement getTxtCurrentPassword() {
-        return Constant.WEBDRIVER.findElement(By.xpath("//form[@id='ChangePW']//input[@id='currentPassword']"));
-    }
-
-    protected WebElement getTxtNewPassword() {
-        return Constant.WEBDRIVER.findElement(By.xpath("//form[@id='ChangePW']//input[@id='newPassword']"));
-    }
-
-    protected WebElement getTxtConfirmPassword() {
-        return Constant.WEBDRIVER.findElement(By.xpath("//form[@id='ChangePW']//input[@id='confirmPassword']"));
+    protected WebElement getTxtName(String name) {
+        return Constant.WEBDRIVER.findElement(By.xpath("//form[@id='ChangePW']//input[@id='" + name + "']"));
     }
 
     protected WebElement getBtnChangePassword() {
         return Constant.WEBDRIVER.findElement(By.xpath("//form[@id='ChangePW']//input[@type='submit']"));
     }
 
-    protected WebElement getLblCurrentPassErrorMsg() {
-        return Constant.WEBDRIVER.findElement(By.xpath("//form[@id='ChangePW']//li[@class='current-password']/label[@class='validation-error']"));
-    }
-
-    protected WebElement getLblNewPassErrorMsg() {
-        return Constant.WEBDRIVER.findElement(By.xpath("//form[@id='ChangePW']//li[@class='new-password']/label[@class='validation-error']"));
-    }
-
-    protected WebElement getLblConfirmPassErrorMsg() {
-        return Constant.WEBDRIVER.findElement(By.xpath("//form[@id='ChangePW']//li[@class='confirm-password']/label[@class='validation-error']"));
+    protected WebElement getLblErrorMsg(String name) {
+        return Constant.WEBDRIVER.findElement(By.xpath("//form[@id='ChangePW']//li[@class='" + name + "']/label[@class='validation-error']"));
     }
 
     protected WebElement getLblChangePassMsg() {
@@ -49,23 +31,15 @@ public class ChangePasswordPage extends GeneralPage {
 
     //Methods
     public void changePassword(String currentPassword, String newPassword, String confirmPassword) {
-        this.getTxtCurrentPassword().sendKeys(currentPassword);
-        this.getTxtNewPassword().sendKeys(newPassword);
-        this.getTxtConfirmPassword().sendKeys(confirmPassword);
-        utilities.scrollDownPage(getBtnChangePassword());
+        this.getTxtName("currentPassword").sendKeys(currentPassword);
+        this.getTxtName("newPassword").sendKeys(newPassword);
+        this.getTxtName("confirmPassword").sendKeys(confirmPassword);
+        scrollDownPage(getBtnChangePassword());
         this.getBtnChangePassword().click();
     }
 
-    public String getCurrentPasswordErrorMsg() {
-        return this.getLblCurrentPassErrorMsg().getText();
-    }
-
-    public String getNewPasswordErrorMsg() {
-        return this.getLblNewPassErrorMsg().getText();
-    }
-
-    public String getConfirmPasswordErrorMsg() {
-        return this.getLblConfirmPassErrorMsg().getText();
+    public String getErrorMsg(String name) {
+        return this.getLblErrorMsg(name).getText();
     }
 
     public String getChangePasswordMsg() {

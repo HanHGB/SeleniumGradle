@@ -1,34 +1,16 @@
 package pageObjects;
 
 import common.Constant;
-import common.Utilities;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
+import static common.Utilities.*;
+
 public class BookTicketPage extends GeneralPage {
 
-    //Declare
-    private Utilities utilities = new Utilities();
-
     //Elements
-    protected WebElement getCbxDepartDate() {
-        return Constant.WEBDRIVER.findElement(By.xpath("//form//select[@name='Date']"));
-    }
-
-    protected WebElement getCbxDepartStation() {
-        return Constant.WEBDRIVER.findElement(By.xpath("//form//select[@name='DepartStation']"));
-    }
-
-    protected WebElement getCbxArriveStation() {
-        return Constant.WEBDRIVER.findElement(By.xpath("//form//select[@name='ArriveStation']"));
-    }
-
-    protected WebElement getCbxSeatType() {
-        return Constant.WEBDRIVER.findElement(By.xpath("//form//select[@name='SeatType']"));
-    }
-
-    protected WebElement getCbxTicketAmount() {
-        return Constant.WEBDRIVER.findElement(By.xpath("//form//select[@name='TicketAmount']"));
+    protected WebElement getCbxName(String name) {
+        return Constant.WEBDRIVER.findElement(By.xpath("//form//select[@name='" + name + "']"));
     }
 
     protected WebElement getBtnBookTicket() {
@@ -51,12 +33,12 @@ public class BookTicketPage extends GeneralPage {
     public void bookTicket(String date, String departStation, String arriveStation,
                            String seatType, int amountTicket) {
 
-        utilities.selectValueInCbx(getCbxDepartDate(), date);
-        utilities.selectValueInCbx(getCbxDepartStation(), departStation);
-        utilities.selectValueInCbx(getCbxArriveStation(), arriveStation);
-        utilities.scrollDownPage(getCbxSeatType());
-        utilities.selectValueInCbx(getCbxSeatType(), seatType);
-        utilities.selectValueInCbx(getCbxTicketAmount(), String.valueOf(amountTicket));
+        selectValueInCbx(getCbxName("Date"), date);
+        selectValueInCbx(getCbxName("DepartStation"), departStation);
+        selectValueInCbx(getCbxName("ArriveStation"), arriveStation);
+        scrollDownPage(getCbxName("SeatType"));
+        selectValueInCbx(getCbxName("SeatType"), seatType);
+        selectValueInCbx(getCbxName("TicketAmount"), String.valueOf(amountTicket));
         this.getBtnBookTicket().click();
     }
 
@@ -73,19 +55,19 @@ public class BookTicketPage extends GeneralPage {
     }
 
     public String getValueOfDepartStation() {
-        return utilities.getValueInCbx(getCbxDepartStation());
+        return getValueInCbx(getCbxName("DepartStation"));
     }
 
     public String getValueOfArriveStation() {
-        return utilities.getValueInCbx(getCbxArriveStation());
+        return getValueInCbx(getCbxName("ArriveStation"));
     }
 
     public String getValueOfDepartDate() {
-        return utilities.getValueInCbx(getCbxDepartDate());
+        return getValueInCbx(getCbxName("Date"));
     }
 
     public String getValueOfTicketAmount() {
-        return utilities.getValueInCbx(getCbxTicketAmount());
+        return getValueInCbx(getCbxName("TicketAmount"));
     }
 
 }

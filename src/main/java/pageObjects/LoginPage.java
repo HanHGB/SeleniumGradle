@@ -8,7 +8,7 @@ import org.openqa.selenium.WebElement;
 public class LoginPage extends GeneralPage {
 
     //Declare
-    private Utilities utilities = new Utilities();
+    private final Utilities utilities = new Utilities();
 
     //Elements
     protected WebElement getTxtUsername() {
@@ -51,11 +51,11 @@ public class LoginPage extends GeneralPage {
     public void login(String username, String password) {
 
         //Clear the value in textbox before
-        utilities.clearValueInTxt(new WebElement[]{getTxtUsername(), getTxtPassword()});
+        Utilities.clearValueInTxt(new WebElement[]{getTxtUsername(), getTxtPassword()});
 
         this.getTxtUsername().sendKeys(username);
         this.getTxtPassword().sendKeys(password);
-        utilities.scrollDownPage(getBtnLogin());
+        Utilities.scrollDownPage(getBtnLogin());
         this.getBtnLogin().click();
     }
 

@@ -1,14 +1,12 @@
 package pageObjects;
 
 import common.Constant;
-import common.Utilities;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
-public class TimetablePage extends GeneralPage {
+import static common.Utilities.scrollDownPage;
 
-    //Declare
-    private Utilities utilities = new Utilities();
+public class TimetablePage extends GeneralPage {
 
     //Elements
     protected WebElement getTxtDepartStation(String departStation) {
@@ -37,14 +35,14 @@ public class TimetablePage extends GeneralPage {
     public void checkPrice(String departStation, String arriveStation) {
 
         WebElement linkCheckPrice = this.getLinkCheckPrice(departStation, arriveStation);
-        utilities.scrollDownPage(linkCheckPrice);
+        scrollDownPage(linkCheckPrice);
         linkCheckPrice.click();
     }
 
     public void bookTicket(String departStation, String arriveStation) {
 
         WebElement linkBookTicket = this.getLinkBookTicket(departStation, arriveStation);
-        utilities.scrollDownPage(this.getLinkBookTicket(departStation, arriveStation));
+        scrollDownPage(this.getLinkBookTicket(departStation, arriveStation));
         this.getLinkBookTicket(departStation, arriveStation).click();
     }
 

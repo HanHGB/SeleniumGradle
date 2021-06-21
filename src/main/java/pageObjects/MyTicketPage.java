@@ -1,30 +1,21 @@
 package pageObjects;
 
 import common.Constant;
-import common.Utilities;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
+import static common.Utilities.scrollDownPage;
+import static common.Utilities.selectValueInCbx;
+
 public class MyTicketPage extends GeneralPage {
 
-    //Declare
-    private Utilities utilities = new Utilities();
-
     //Elements
-    protected WebElement getCbxDepartStationFilter() {
-        return Constant.WEBDRIVER.findElement(By.xpath("//div[@class='Filter']//select[@name='FilterDpStation']"));
-    }
-
-    protected WebElement getCbxArriveStationFilter() {
-        return Constant.WEBDRIVER.findElement(By.xpath("//div[@class='Filter']//select[@name='FilterArStation']"));
-    }
-
     protected WebElement getTxtDepartDateFilter() {
         return Constant.WEBDRIVER.findElement(By.xpath("//div[@class='Filter']//input[@name='FilterDpDate']"));
     }
 
-    protected WebElement getCbxStatusFilter() {
-        return Constant.WEBDRIVER.findElement(By.xpath("//div[@class='Filter']//select[@name='FilterStatus']"));
+    protected WebElement getCbxFilterName(String name) {
+        return Constant.WEBDRIVER.findElement(By.xpath("//div[@class='Filter']//select[@name='Filter" + name + "']"));
     }
 
     protected WebElement getBtnFilter() {
@@ -65,10 +56,10 @@ public class MyTicketPage extends GeneralPage {
     //Methods
     public void filterTicket(String departStation, String arriveStation, String departDate, String status) {
 
-        utilities.selectValueInCbx(getCbxDepartStationFilter(), departStation);
-        utilities.selectValueInCbx(getCbxArriveStationFilter(), arriveStation);
-        utilities.selectValueInCbx(getTxtDepartDateFilter(), departDate);
-        utilities.selectValueInCbx(getCbxStatusFilter(), status);
+        selectValueInCbx(getCbxFilterName("DpStation"), departStation);
+        selectValueInCbx(getCbxFilterName("ArStation"), arriveStation);
+        selectValueInCbx(getTxtDepartDateFilter(), departDate);
+        selectValueInCbx(getCbxFilterName("Status"), status);
 
         this.getBtnFilter().click();
     }
@@ -76,7 +67,7 @@ public class MyTicketPage extends GeneralPage {
     public void cancelTicket(String departStation, String arriveStation, String seatType, String departDate, String bookDate, String expiredDate, String status) {
 
         WebElement btnCancel = this.getBtnCancel(departStation, arriveStation, seatType, departDate, bookDate, expiredDate, status);
-        utilities.scrollDownPage(btnCancel);
+        scrollDownPage(btnCancel);
         btnCancel.click();
         Constant.WEBDRIVER.switchTo().alert().accept();
 
