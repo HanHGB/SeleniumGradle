@@ -55,6 +55,7 @@ public class BaseTest {
         } else if (iTestResult.getStatus() == ITestResult.SUCCESS) {
             LOGGER.log(LogStatus.PASS, "Test Case pass: " + iTestResult.getName());
         }
+        REPORTS.flush();
     }
 
     @AfterClass

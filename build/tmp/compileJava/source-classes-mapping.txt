@@ -28,37 +28,37 @@ pageObjects/FAQPage.java
  pageObjects.FAQPage
 pageObjects/RegisterPage.java
  pageObjects.RegisterPage
-pageObjects/LoginPage.java
- pageObjects.LoginPage
 pageObjects/BookTicketPage.java
  pageObjects.BookTicketPage
 pageObjects/ForgotPasswordPage.java
  pageObjects.ForgotPasswordPage
-testcases/BaseTest.java
- testcases.BaseTest
-testcases/TC15.java
- testcases.TC15
-testcases/TC16.java
- testcases.TC16
-testcases/TC14.java
- testcases.TC14
+pageObjects/LoginPage.java
+ pageObjects.LoginPage
 testcases/TC11.java
  testcases.TC11
-testcases/TC02.java
- testcases.TC02
+testcases/TC14.java
+ testcases.TC14
 testcases/TC04.java
  testcases.TC04
 testcases/TC07.java
  testcases.TC07
 testcases/TC03.java
  testcases.TC03
-testcases/TC06.java
- testcases.TC06
-testcases/TC09.java
- testcases.TC09
+testcases/BaseTest.java
+ testcases.BaseTest
+testcases/TC15.java
+ testcases.TC15
 testcases/TC10.java
  testcases.TC10
 testcases/TC05.java
  testcases.TC05
+testcases/TC02.java
+ testcases.TC02
+testcases/TC16.java
+ testcases.TC16
+testcases/TC06.java
+ testcases.TC06
+testcases/TC09.java
+ testcases.TC09
 testcases/TC01.java
  testcases.TC01
