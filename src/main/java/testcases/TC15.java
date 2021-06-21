@@ -1,9 +1,12 @@
 package testcases;
 
-import common.Constant;
+import com.relevantcodes.extentreports.LogStatus;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pageObjects.*;
+
+import static common.Constant.LOGGER;
+import static common.Constant.REPORTS;
 
 public class TC15 extends BaseTest {
 
@@ -16,14 +19,24 @@ public class TC15 extends BaseTest {
 
     @Test
     public void TC15() {
-        System.out.println("TC15: User can open \"Book ticket\" page by clicking on \"Book ticket\" link in \"Train timetable\" page");
+        LOGGER = REPORTS.startTest("TC15", "User can open \"Book ticket\" page by clicking on \"Book ticket\" link in \"Train timetable\" page");
 
+        LOGGER.log(LogStatus.INFO, "Step #1: ", "Navigate to QA Railway Website");
         homePage.open();
+
+        LOGGER.log(LogStatus.INFO, "Step #2: ", "Click on \"Login\" tab");
         homePage.gotoLoginPage();
-        loginPage.login(Constant.USERNAME, Constant.PASSWORD);
+
+        LOGGER.log(LogStatus.INFO, "Step #3: ", "Login with a valid account");
+        loginPage.login(System.getenv("username"), System.getenv("password"));
+
+        LOGGER.log(LogStatus.INFO, "Step #4: ", "Click on \"Timetable\" tab");
         homePage.gotoTimetablePage();
+
+        LOGGER.log(LogStatus.INFO, "Step #4: ", " Click on \"book ticket\" link of the route from \"Huế\" to \"Sài Gòn\"");
         timetablePage.bookTicket("Huế", "Sài Gòn");
 
+        LOGGER.log(LogStatus.INFO, "Checkpoint: ", "\"Book ticket\" page is loaded with correct \"Depart from\" and \"Arrive at\" values.");
         Assert.assertEquals("Huế", bookTicketPage.getValueOfDepartStation(), "The information is not correct");
         Assert.assertEquals("Sài Gòn", bookTicketPage.getValueOfArriveStation(), "The information is not correct");
     }

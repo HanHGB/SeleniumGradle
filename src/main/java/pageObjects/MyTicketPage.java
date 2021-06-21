@@ -1,9 +1,11 @@
 package pageObjects;
 
-import common.Constant;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
+import java.util.List;
+
+import static common.Constant.WEBDRIVER;
 import static common.Utilities.scrollDownPage;
 import static common.Utilities.selectValueInCbx;
 
@@ -11,25 +13,25 @@ public class MyTicketPage extends GeneralPage {
 
     //Elements
     protected WebElement getTxtDepartDateFilter() {
-        return Constant.WEBDRIVER.findElement(By.xpath("//div[@class='Filter']//input[@name='FilterDpDate']"));
+        return WEBDRIVER.findElement(By.xpath("//div[@class='Filter']//input[@name='FilterDpDate']"));
     }
 
     protected WebElement getCbxFilterName(String name) {
-        return Constant.WEBDRIVER.findElement(By.xpath("//div[@class='Filter']//select[@name='Filter" + name + "']"));
+        return WEBDRIVER.findElement(By.xpath("//div[@class='Filter']//select[@name='Filter" + name + "']"));
     }
 
     protected WebElement getBtnFilter() {
-        return Constant.WEBDRIVER.findElement(By.xpath("//div[@class='Filter']//input[@value='Apply Filter']"));
+        return WEBDRIVER.findElement(By.xpath("//div[@class='Filter']//input[@value='Apply Filter']"));
     }
 
     protected WebElement getLblTitle() {
-        return Constant.WEBDRIVER.findElement(By.tagName("h1"));
+        return WEBDRIVER.findElement(By.tagName("h1"));
     }
 
     protected WebElement getBtnCancel(String departStation, String arriveStation, String seatType, String departDate,
                                       String bookDate, String expiredDate, String status) {
 
-        return Constant.WEBDRIVER.findElement(By.xpath("//table[@class='MyTable']//td[contains(.,'" + departStation
+        return WEBDRIVER.findElement(By.xpath("//table[@class='MyTable']//td[contains(.,'" + departStation
                 + "')]/following-sibling::td[contains(.,'" + arriveStation + "')]/following-sibling::td[contains(.,'" + seatType
                 + "')]/following-sibling::td[contains(.,'" + departDate + "')]/following-sibling::td[contains(.,'" + bookDate
                 + "')]/following-sibling::td[contains(.,'" + expiredDate + "')]/following-sibling::td[contains(.,'" + status
@@ -37,16 +39,16 @@ public class MyTicketPage extends GeneralPage {
     }
 
     protected WebElement getLblFilterMsg() {
-        return Constant.WEBDRIVER.findElement(By.xpath("//div[@class='Filter']//select[@name='FilterStatus']"));
+        return WEBDRIVER.findElement(By.xpath("//div[@class='Filter']//select[@name='FilterStatus']"));
     }
 
     protected WebElement getLblFilterDateErrorMsg() {
-        return Constant.WEBDRIVER.findElement(By.xpath("///form[@name='FilterForm']//div[@class='Filter']/div[@class='error message']"));
+        return WEBDRIVER.findElement(By.xpath("///form[@name='FilterForm']//div[@class='Filter']/div[@class='error message']"));
     }
 
     protected WebElement getRowOfTicket(String departStation, String arriveStation, String seatType, String departDate,
                                         String bookDate, String expiredDate, String status) {
-        return Constant.WEBDRIVER.findElement(By.xpath("//table[@class='MyTable']//td[contains(.,'" + departStation
+        return WEBDRIVER.findElement(By.xpath("//table[@class='MyTable']//td[contains(.,'" + departStation
                 + "')]/following-sibling::td[contains(.,'" + arriveStation + "')]/following-sibling::td[contains(.,'" + seatType
                 + "')]/following-sibling::td[contains(.,'" + departDate + "')]/following-sibling::td[contains(.,'" + bookDate
                 + "')]/following-sibling::td[contains(.,'" + expiredDate + "')]/following-sibling::td[contains(.,'" + status
@@ -69,7 +71,7 @@ public class MyTicketPage extends GeneralPage {
         WebElement btnCancel = this.getBtnCancel(departStation, arriveStation, seatType, departDate, bookDate, expiredDate, status);
         scrollDownPage(btnCancel);
         btnCancel.click();
-        Constant.WEBDRIVER.switchTo().alert().accept();
+        WEBDRIVER.switchTo().alert().accept();
 
     }
 
@@ -93,6 +95,12 @@ public class MyTicketPage extends GeneralPage {
         } catch (org.openqa.selenium.NoSuchElementException e) {
             return false;
         }
+    }
+
+    public int getRowTable() {
+        WebElement table = WEBDRIVER.findElement(By.xpath("//table[@class='MyTable']/tbody"));
+        List<WebElement> rows_table = table.findElements(By.tagName("tr"));
+        return rows_table.size();
     }
 
 }

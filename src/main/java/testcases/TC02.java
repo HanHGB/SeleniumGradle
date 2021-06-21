@@ -1,10 +1,13 @@
 package testcases;
 
-import common.Constant;
+import com.relevantcodes.extentreports.LogStatus;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pageObjects.HomePage;
 import pageObjects.LoginPage;
+
+import static common.Constant.LOGGER;
+import static common.Constant.REPORTS;
 
 public class TC02 extends BaseTest {
 
@@ -14,14 +17,22 @@ public class TC02 extends BaseTest {
 
     @Test
     public void TC02() {
-        System.out.println("TC02: User can't login with blank Username textbox");
+        LOGGER = REPORTS.startTest("TC02", "User can't login with blank Username textbox");
+
+        LOGGER.log(LogStatus.INFO, "Step #1: ", "Navigate to QA Railway Website");
         homePage.open();
 
+        LOGGER.log(LogStatus.INFO, "Step #2: ", "Click on \"Login\" tab");
         homePage.gotoLoginPage();
-        loginPage.login("", Constant.PASSWORD);
+
+        LOGGER.log(LogStatus.INFO, "Step #3: ", "User doesn't type any words into \"Username\" textbox but enter valid information into \"Password\" textbox ");
+        LOGGER.log(LogStatus.INFO, "Step #4: ", "Click on \"Login\" button");
+        loginPage.login("", System.getenv("password"));
+
         String actualMsg = loginPage.getLoginErrorMsg();
         String expectedMsg = "There was a problem with your login and/or errors exist in your form.";
 
+        LOGGER.log(LogStatus.INFO, "Checkpoint: ", "User can't login and message \"There was a problem with your login and/or errors exist in your form. \" appears.");
         Assert.assertEquals(actualMsg, expectedMsg, "Msg is not correctly");
     }
 }

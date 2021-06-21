@@ -35,7 +35,7 @@ public class RegisterPage extends GeneralPage {
     }
 
     protected WebElement getLblRegisterMsg() {
-        return Constant.WEBDRIVER.findElement(By.xpath("//div[@id='content']/p[@class='message error']"));
+        return Constant.WEBDRIVER.findElement(By.xpath("//div[@id='content']/p"));
     }
 
     //Methods
@@ -76,7 +76,7 @@ public class RegisterPage extends GeneralPage {
         return this.getLblErrorMsg("pid-number").getText();
     }
 
-    public String getCreateAccountErrorMsg() {
+    public String getRegisterErrorMsg() {
         return this.getLblCreateAccountErrorMsg().getText();
     }
 
