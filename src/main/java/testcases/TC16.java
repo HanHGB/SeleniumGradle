@@ -1,6 +1,6 @@
 package testcases;
 
-import com.relevantcodes.extentreports.LogStatus;
+import com.aventstack.extentreports.Status;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pageObjects.*;
@@ -21,36 +21,46 @@ public class TC16 extends BaseTest {
     @Test
     public void TC16() {
         System.out.println("TC16: User can cancel a ticket");
-        LOGGER = REPORTS.startTest("TC16", "User can cancel a ticket");
+        LOGGER = REPORTS.createTest("TC16", "User can cancel a ticket");
 
-        LOGGER.log(LogStatus.INFO, "Step #1: ", "Navigate to QA Railway Website");
+        LOGGER.log(Status.INFO, "Step #1: Navigate to QA Railway Website");
         homePage.open();
 
-        LOGGER.log(LogStatus.INFO, "Step #2: ", "Login with a valid account");
+        LOGGER.log(Status.INFO, "Step #2: Login with a valid account");
         homePage.gotoLoginPage();
         loginPage.login(System.getenv("username"), System.getenv("password"));
 
-        LOGGER.log(LogStatus.INFO, "Step #3: ", "Book a ticket");
+        LOGGER.log(Status.INFO, "Step #3: Book a ticket");
         loginPage.gotoBookTicketPage();
         bookTicketPage.bookTicket("6/27/2021", "Sài Gòn", "Nha Trang", "Soft bed with air conditioner", 1);
 
-        LOGGER.log(LogStatus.INFO, "Step #4: ", "Click on \"My ticket\" tab");
+        LOGGER.log(Status.INFO, "Step #4: Click on \"My ticket\" tab");
         bookTicketSuccessfullyPage.gotoMyTicketPage();
 
         //Get current rows
         currentRows = myTicketPage.getRowTable();
 
-        LOGGER.log(LogStatus.INFO, "Step #5: ", "Click on \"Cancel\" button of ticket which user want to cancel.");
-        LOGGER.log(LogStatus.INFO, "Step #6: ", "Click on \"OK\" button on Confirmation message \"Are you sure?\"");
+        LOGGER.log(Status.INFO, "Step #5: Click on \"Cancel\" button of ticket which user want to cancel.");
+        LOGGER.log(Status.INFO, "Step #6: Click on \"OK\" button on Confirmation message \"Are you sure?\"");
         myTicketPage.cancelTicket("Sài Gòn", "Nha Trang", "", "", "", "", "");
 
-        //Get current rows that one row has deleted (change rows)
-        rowAfterDeleted = myTicketPage.getRowTable();
+        try {
 
-        LOGGER.log(LogStatus.INFO, "Checkpoint: ", "The canceled ticket is disappeared.");
-        if (myTicketPage.findTicket("Sài Gòn", "Nhan Trang", "", "", "", "", "") == true)
-            Assert.assertEquals(rowAfterDeleted, currentRows - 1, "Not deleted");
-        else
-            Assert.assertFalse(false);
+            //In Firefox, when canceling a ticket, getting the remaining ticket count is not correct because it happened
+            // before the cancellation was performed. So using Sleep makes the get ticket count action properly flow.
+            Thread.sleep(500);
+
+            //Get current rows that one row has deleted (change rows)
+            rowAfterDeleted = myTicketPage.getRowTable();
+
+            LOGGER.log(Status.INFO, "Checkpoint: The canceled ticket is disappeared.");
+            if (myTicketPage.findTicket("Sài Gòn", "Nha Trang", "", "", "", "", ""))
+                Assert.assertEquals(rowAfterDeleted, currentRows - 1, "Not deleted");
+            else
+                Assert.assertFalse(false);
+        } catch (InterruptedException ie) {
+            LOGGER.log(Status.INFO, "Error: " + ie);
+        }
+
     }
 }

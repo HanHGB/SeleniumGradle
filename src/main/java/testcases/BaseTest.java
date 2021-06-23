@@ -1,7 +1,11 @@
 package testcases;
 
-import com.relevantcodes.extentreports.ExtentReports;
-import com.relevantcodes.extentreports.LogStatus;
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.Status;
+import com.aventstack.extentreports.markuputils.ExtentColor;
+import com.aventstack.extentreports.markuputils.MarkupHelper;
+import com.aventstack.extentreports.reporter.ExtentSparkReporter;
+import com.aventstack.extentreports.reporter.configuration.Theme;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -11,8 +15,8 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
 
-import java.io.File;
 import java.util.Objects;
+import java.util.concurrent.TimeUnit;
 
 import static common.Constant.*;
 
@@ -20,8 +24,12 @@ public class BaseTest {
 
     @BeforeSuite
     public void beforeSuite() {
-        REPORTS = new ExtentReports(System.getProperty("user.dir") + "/src/main/resources/result.html");
-        REPORTS.loadConfig(new File(System.getProperty("user.dir") + "/src/main/resources/extent-config.xml"));
+        HTML_REPORTER = new ExtentSparkReporter(System.getProperty("user.dir") + "/src/main/resources/report.html");
+        REPORTS = new ExtentReports();
+        REPORTS.attachReporter(HTML_REPORTER);
+        HTML_REPORTER.config().setDocumentTitle("Result of TCs");
+        HTML_REPORTER.config().setReportName("Result");
+        HTML_REPORTER.config().setTheme(Theme.DARK);
     }
 
     @BeforeClass
@@ -42,20 +50,23 @@ public class BaseTest {
             throw new Exception("Browser is not correct");
         }
         WEBDRIVER.manage().window().maximize();
+        WEBDRIVER.manage().timeouts().implicitlyWait(100, TimeUnit.SECONDS);
     }
 
     @AfterMethod
     public void afterMethod(ITestResult iTestResult) {
+
         if (iTestResult.getStatus() == ITestResult.FAILURE) {
-            LOGGER.log(LogStatus.FAIL, "Test Case Fail: " + iTestResult.getName());
-            String base64Screenshot = "data:image/png;base64," + ((TakesScreenshot) Objects.requireNonNull(WEBDRIVER)).getScreenshotAs(OutputType.BASE64);
-            LOGGER.log(LogStatus.INFO, "Image: " + LOGGER.addBase64ScreenShot(base64Screenshot));
+            LOGGER.log(Status.FAIL, MarkupHelper.createLabel(iTestResult.getName() + " - Test case Failed", ExtentColor.RED));
+            LOGGER.log(Status.FAIL, MarkupHelper.createLabel(iTestResult.getThrowable() + " - Test Case Failed", ExtentColor.RED));
+
+            String base64Screenshot = ((TakesScreenshot) Objects.requireNonNull(WEBDRIVER)).getScreenshotAs(OutputType.BASE64);
+            LOGGER.log(Status.INFO, "Image: " + LOGGER.addScreenCaptureFromBase64String(base64Screenshot));
         } else if (iTestResult.getStatus() == ITestResult.SKIP) {
-            LOGGER.log(LogStatus.SKIP, "Test Case Skip: " + iTestResult.getName());
+            LOGGER.log(Status.SKIP, MarkupHelper.createLabel(iTestResult.getName() + " - Test Case Skip", ExtentColor.ORANGE));
         } else if (iTestResult.getStatus() == ITestResult.SUCCESS) {
-            LOGGER.log(LogStatus.PASS, "Test Case pass: " + iTestResult.getName());
+            LOGGER.log(Status.PASS, MarkupHelper.createLabel(iTestResult.getName() + " - Test Case Pass", ExtentColor.GREEN));
         }
-        REPORTS.flush();
     }
 
     @AfterClass
@@ -66,7 +77,6 @@ public class BaseTest {
 
     @AfterSuite
     public void afterSuite() {
-        REPORTS.endTest(LOGGER);
         REPORTS.flush();
     }
 }

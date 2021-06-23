@@ -72,7 +72,6 @@ public class MyTicketPage extends GeneralPage {
         scrollDownPage(btnCancel);
         btnCancel.click();
         WEBDRIVER.switchTo().alert().accept();
-
     }
 
     public String getFilterMsg() {

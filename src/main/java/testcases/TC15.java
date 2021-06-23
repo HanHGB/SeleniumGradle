@@ -1,6 +1,6 @@
 package testcases;
 
-import com.relevantcodes.extentreports.LogStatus;
+import com.aventstack.extentreports.Status;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pageObjects.*;
@@ -19,24 +19,24 @@ public class TC15 extends BaseTest {
 
     @Test
     public void TC15() {
-        LOGGER = REPORTS.startTest("TC15", "User can open \"Book ticket\" page by clicking on \"Book ticket\" link in \"Train timetable\" page");
+        LOGGER = REPORTS.createTest("TC15", "User can open \"Book ticket\" page by clicking on \"Book ticket\" link in \"Train timetable\" page");
 
-        LOGGER.log(LogStatus.INFO, "Step #1: ", "Navigate to QA Railway Website");
+        LOGGER.log(Status.INFO, "Step #1: Navigate to QA Railway Website");
         homePage.open();
 
-        LOGGER.log(LogStatus.INFO, "Step #2: ", "Click on \"Login\" tab");
+        LOGGER.log(Status.INFO, "Step #2: Click on \"Login\" tab");
         homePage.gotoLoginPage();
 
-        LOGGER.log(LogStatus.INFO, "Step #3: ", "Login with a valid account");
+        LOGGER.log(Status.INFO, "Step #3: Login with a valid account");
         loginPage.login(System.getenv("username"), System.getenv("password"));
 
-        LOGGER.log(LogStatus.INFO, "Step #4: ", "Click on \"Timetable\" tab");
+        LOGGER.log(Status.INFO, "Step #4: Click on \"Timetable\" tab");
         homePage.gotoTimetablePage();
 
-        LOGGER.log(LogStatus.INFO, "Step #4: ", " Click on \"book ticket\" link of the route from \"Huế\" to \"Sài Gòn\"");
+        LOGGER.log(Status.INFO, "Step #4: Click on \"book ticket\" link of the route from \"Huế\" to \"Sài Gòn\"");
         timetablePage.bookTicket("Huế", "Sài Gòn");
 
-        LOGGER.log(LogStatus.INFO, "Checkpoint: ", "\"Book ticket\" page is loaded with correct \"Depart from\" and \"Arrive at\" values.");
+        LOGGER.log(Status.INFO, "Checkpoint: \"Book ticket\" page is loaded with correct \"Depart from\" and \"Arrive at\" values.");
         Assert.assertEquals("Huế", bookTicketPage.getValueOfDepartStation(), "The information is not correct");
         Assert.assertEquals("Sài Gòn", bookTicketPage.getValueOfArriveStation(), "The information is not correct");
     }

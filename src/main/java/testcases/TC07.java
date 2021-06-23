@@ -1,6 +1,6 @@
 package testcases;
 
-import com.relevantcodes.extentreports.LogStatus;
+import com.aventstack.extentreports.Status;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pageObjects.HomePage;
@@ -20,21 +20,21 @@ public class TC07 extends BaseTest {
 
     @Test
     public void TC07() {
-        LOGGER = REPORTS.startTest("TC07", "User can create new account");
+        LOGGER = REPORTS.createTest("TC07", "User can create new account");
 
-        LOGGER.log(LogStatus.INFO, "Step #1: ", "Navigate to QA Railway Website");
+        LOGGER.log(Status.INFO, "Step #1: Navigate to QA Railway Website");
         homePage.open();
 
-        LOGGER.log(LogStatus.INFO, "Step #2: ", "Click on \"Register\" tab");
+        LOGGER.log(Status.INFO, "Step #2: Click on \"Register\" tab");
         homePage.gotoRegisterPage();
 
-        LOGGER.log(LogStatus.INFO, "Step #3: ", "Enter valid information into all fields");
+        LOGGER.log(Status.INFO, "Step #3: Enter valid information into all fields");
         registerPage.register(email, password, password, PID);
 
         String actualMsg = registerPage.getRegisterMsg();
         String expectedMsg = "Thank you for registering your account";
 
-        LOGGER.log(LogStatus.INFO, "Checkpoint: ", "New account is created and message \"Thank you for registering your account\" appears.");
+        LOGGER.log(Status.INFO, "Checkpoint: New account is created and message \"Thank you for registering your account\" appears.");
         Assert.assertEquals(actualMsg, expectedMsg, "Msg is not correctly");
     }
 

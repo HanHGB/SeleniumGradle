@@ -1,6 +1,6 @@
 package testcases;
 
-import com.relevantcodes.extentreports.LogStatus;
+import com.aventstack.extentreports.Status;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pageObjects.HomePage;
@@ -20,22 +20,22 @@ public class TC10 extends BaseTest {
 
     @Test
     public void TC10() {
-        LOGGER = REPORTS.startTest("TC10", "User can't create account with \"Confirm password\" is not the same with \"Password\"");
+        LOGGER = REPORTS.createTest("TC10", "User can't create account with \"Confirm password\" is not the same with \"Password\"");
 
-        LOGGER.log(LogStatus.INFO, "Step #1: ", "Navigate to QA Railway Website");
+        LOGGER.log(Status.INFO, "Step #1: Navigate to QA Railway Website");
         homePage.open();
 
-        LOGGER.log(LogStatus.INFO, "Step #2: ", "Click on \"Register\" tab");
+        LOGGER.log(Status.INFO, "Step #2: Click on \"Register\" tab");
         homePage.gotoRegisterPage();
 
-        LOGGER.log(LogStatus.INFO, "Step #3: ", "Enter valid information into all fields except \"Confirm password\" is not the same with \"Password\"");
-        LOGGER.log(LogStatus.INFO, "Step #4: ", "Click on \"Register\" button");
+        LOGGER.log(Status.INFO, "Step #3: Enter valid information into all fields except \"Confirm password\" is not the same with \"Password\"");
+        LOGGER.log(Status.INFO, "Step #4: Click on \"Register\" button");
         registerPage.register(email, password, "1231112233", PID);
 
         String actualMsg = registerPage.getRegisterErrorMsg();
         String expectedMsg = "There're errors in the form. Please correct the errors and try again.";
 
-        LOGGER.log(LogStatus.INFO, "Checkpoint: ", "Message \"There're errors in the form. Please correct the errors and try again.\" appears.");
+        LOGGER.log(Status.INFO, "Checkpoint: Message \"There're errors in the form. Please correct the errors and try again.\" appears.");
         Assert.assertEquals(actualMsg, expectedMsg, "Msg is not correctly");
     }
 }

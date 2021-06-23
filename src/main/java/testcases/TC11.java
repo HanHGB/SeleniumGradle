@@ -1,6 +1,6 @@
 package testcases;
 
-import com.relevantcodes.extentreports.LogStatus;
+import com.aventstack.extentreports.Status;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pageObjects.HomePage;
@@ -18,16 +18,16 @@ public class TC11 extends BaseTest {
 
     @Test
     public void TC11() {
-        LOGGER = REPORTS.startTest("TC11", "User can't create account while password and PID fields are empty");
+        LOGGER = REPORTS.createTest("TC11", "User can't create account while password and PID fields are empty");
 
-        LOGGER.log(LogStatus.INFO, "Step #1: ", "Navigate to QA Railway Website");
+        LOGGER.log(Status.INFO, "Step #1: Navigate to QA Railway Website");
         homePage.open();
 
-        LOGGER.log(LogStatus.INFO, "Step #2: ", "Click on \"Register\" tab");
+        LOGGER.log(Status.INFO, "Step #2: Click on \"Register\" tab");
         registerPage.gotoRegisterPage();
 
-        LOGGER.log(LogStatus.INFO, "Step #3: ", "Enter valid email address and leave other fields empty");
-        LOGGER.log(LogStatus.INFO, "Step #4: ", "Click on \"Register\" button");
+        LOGGER.log(Status.INFO, "Step #3: Enter valid email address and leave other fields empty");
+        LOGGER.log(Status.INFO, "Step #4: Click on \"Register\" button");
         registerPage.register(email, "", "", "");
 
         String actualRegisterMsg = registerPage.getRegisterErrorMsg();
@@ -37,13 +37,13 @@ public class TC11 extends BaseTest {
         String actualPIDMsg = registerPage.getPIDErrorMsg();
         String expectedPIDMsg = "Invalid ID length";
 
-        LOGGER.log(LogStatus.INFO, "Checkpoint: ", "Message \"There're errors in the form. Please correct the errors and try again.\" appears above the form.");
+        LOGGER.log(Status.INFO, "Checkpoint #1: Message \"There're errors in the form. Please correct the errors and try again.\" appears above the form.");
         Assert.assertEquals(actualRegisterMsg, expectedRegisterMsg, "Msg is not correctly");
 
-        LOGGER.log(LogStatus.INFO, "Checkpoint: ", "Next to password fields, error message \"Invalid password length.\" displays");
+        LOGGER.log(Status.INFO, "Checkpoint #2: Next to password fields, error message \"Invalid password length.\" displays");
         Assert.assertEquals(actualPasswordMsg, expectedPasswordMsg, "Msg is not correctly");
 
-        LOGGER.log(LogStatus.INFO, "Checkpoint: ", "Next to PID field, error message \"Invalid ID length.\" displays");
+        LOGGER.log(Status.INFO, "Checkpoint #3: Next to PID field, error message \"Invalid ID length.\" displays");
         Assert.assertEquals(actualPIDMsg, expectedPIDMsg, "Msg is not correctly");
     }
 }

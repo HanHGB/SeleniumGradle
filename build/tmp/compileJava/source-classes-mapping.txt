@@ -12,8 +12,8 @@ pageObjects/ConfirmCodePage.java
  pageObjects.ConfirmCodePage
 pageObjects/HomePage.java
  pageObjects.HomePage
-pageObjects/MyTicketPage.java
- pageObjects.MyTicketPage
+pageObjects/BookTicketPage.java
+ pageObjects.BookTicketPage
 pageObjects/GeneralPage.java
  pageObjects.GeneralPage
 common/Utilities.java
@@ -28,12 +28,12 @@ pageObjects/FAQPage.java
  pageObjects.FAQPage
 pageObjects/RegisterPage.java
  pageObjects.RegisterPage
-pageObjects/BookTicketPage.java
- pageObjects.BookTicketPage
-pageObjects/ForgotPasswordPage.java
- pageObjects.ForgotPasswordPage
 pageObjects/LoginPage.java
  pageObjects.LoginPage
+pageObjects/ForgotPasswordPage.java
+ pageObjects.ForgotPasswordPage
+pageObjects/MyTicketPage.java
+ pageObjects.MyTicketPage
 testcases/TC11.java
  testcases.TC11
 testcases/TC14.java
@@ -54,11 +54,11 @@ testcases/TC05.java
  testcases.TC05
 testcases/TC02.java
  testcases.TC02
-testcases/TC16.java
- testcases.TC16
+testcases/TC01.java
+ testcases.TC01
 testcases/TC06.java
  testcases.TC06
 testcases/TC09.java
  testcases.TC09
-testcases/TC01.java
- testcases.TC01
+testcases/TC16.java
+ testcases.TC16
