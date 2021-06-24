@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="All Test Suite">
-    <test verbose="2" preserve-order="true" name="D:/Workspace/SeleniumGradle">
+    <test verbose="2" preserve-order="true" name="Test All" parallel="tests" thread-count="2">
         <parameter name="browser" value="chrome">
             <classes>
                 <class name="testcases.TC01">
@@ -39,6 +39,11 @@
                         <include name="TC07"/>
                     </methods>
                 </class>
+                <class name="testcases.TC08">
+                    <methods>
+                        <include name="TC08"/>
+                    </methods>
+                </class>
                 <class name="testcases.TC09">
                     <methods>
                         <include name="TC09"/>
@@ -52,6 +57,16 @@
                 <class name="testcases.TC11">
                     <methods>
                         <include name="TC11"/>
+                    </methods>
+                </class>
+                <class name="testcases.TC12">
+                    <methods>
+                        <include name="TC12"/>
+                    </methods>
+                </class>
+                <class name="testcases.TC13">
+                    <methods>
+                        <include name="TC13"/>
                     </methods>
                 </class>
                 <class name="testcases.TC14">
@@ -71,6 +86,5 @@
                 </class>
             </classes>
         </parameter>
-
     </test>
 </suite>

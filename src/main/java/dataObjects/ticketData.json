@@ -1,20 +1,11 @@
-[
-  {
-    "users":{
-      "username":"john@abc.com",
-      "password":"abcd@1234"
+{
+  "dataset": [
+    {
+      "departDate": "7/2/2021",
+      "departStation": "Sài Gòn",
+      "arriveStation": "Quảng Ngãi",
+      "seatType": "Hard seat",
+      "ticketAmount": "1"
     }
-  },
-  {
-    "users":{
-      "username":"doe@abc.com",
-      "password":"pwd@1234"
-    }
-  },
-  {
-    "users":{
-      "username":"henry@abc.com",
-      "password":"abcd@1234"
-    }
-  }
-]
+  ]
+}

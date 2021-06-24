@@ -6,6 +6,10 @@ import com.aventstack.extentreports.markuputils.ExtentColor;
 import com.aventstack.extentreports.markuputils.MarkupHelper;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import dataObjects.Ticket;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -14,22 +18,26 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
+import pageObjects.HomePage;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.util.Objects;
-import java.util.concurrent.TimeUnit;
 
 import static common.Constant.*;
 
 public class BaseTest {
 
+    private final HomePage homePage = new HomePage();
+
     @BeforeSuite
     public void beforeSuite() {
-        HTML_REPORTER = new ExtentSparkReporter(System.getProperty("user.dir") + "/src/main/resources/report.html");
+        HTML_REPORTER = new ExtentSparkReporter(System.getProperty("user.dir") + "/src/main/resources/report_Firefox.html");
         REPORTS = new ExtentReports();
         REPORTS.attachReporter(HTML_REPORTER);
         HTML_REPORTER.config().setDocumentTitle("Result of TCs");
         HTML_REPORTER.config().setReportName("Result");
-        HTML_REPORTER.config().setTheme(Theme.DARK);
+        HTML_REPORTER.config().setTheme(Theme.STANDARD);
     }
 
     @BeforeClass
@@ -50,7 +58,6 @@ public class BaseTest {
             throw new Exception("Browser is not correct");
         }
         WEBDRIVER.manage().window().maximize();
-        WEBDRIVER.manage().timeouts().implicitlyWait(100, TimeUnit.SECONDS);
     }
 
     @AfterMethod
@@ -78,5 +85,31 @@ public class BaseTest {
     @AfterSuite
     public void afterSuite() {
         REPORTS.flush();
+    }
+
+    @DataProvider(name = "dataset")
+    public Object[] getData() throws FileNotFoundException {
+
+        JsonParser jsonParser = new JsonParser();
+        FileReader reader = new FileReader("src/main/java/dataObjects/ticketData.json");
+
+        Object object = jsonParser.parse(reader);
+
+        JsonObject dataset = (JsonObject) object;
+        JsonArray ticketInfo = (JsonArray) dataset.get("dataset");
+
+        Object[] array = new Ticket[ticketInfo.size()];
+
+        for (int index = 0; index < ticketInfo.size(); index++) {
+            JsonObject info = (JsonObject) ticketInfo.get(index);
+            String departDate = info.get("departDate").getAsString();
+            String departStation = info.get("departStation").getAsString();
+            String arriveStation = info.get("arriveStation").getAsString();
+            String seatType = info.get("seatType").getAsString();
+            String ticketAmount = info.get("ticketAmount").getAsString();
+
+            array[index] = new Ticket(departDate, departStation, arriveStation, seatType, Integer.parseInt(ticketAmount));
+        }
+        return array;
     }
 }

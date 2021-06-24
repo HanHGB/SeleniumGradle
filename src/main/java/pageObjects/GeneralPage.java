@@ -26,7 +26,7 @@ public class GeneralPage {
     }
 
     public void logout() {
-        this.getTabName("Logout").click();
+        this.getTabName("Log out").click();
     }
 
     public void gotoFAQPage() {
@@ -63,5 +63,14 @@ public class GeneralPage {
 
     public boolean doesTabNameExist(String tabName) {
         return this.getTabName(tabName).isDisplayed();
+    }
+
+    public boolean findTab(String tabName) {
+        try {
+            this.getTabName(tabName).isDisplayed();
+            return true;
+        } catch (org.openqa.selenium.NoSuchElementException err) {
+            return false;
+        }
     }
 }

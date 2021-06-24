@@ -30,8 +30,5 @@ public class Utilities {
         return select.getFirstSelectedOption().getText();
     }
 
-    //Change "\" to "/"
-    public static String changeCharInWord(String str) {
-        return str.replace("\\", "/");
-    }
+
 }
